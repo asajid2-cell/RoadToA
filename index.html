@@ -460,54 +460,513 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 1024px) {
-            h1 { font-size: 2.5rem; }
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
+        /* ========================================
+           RESPONSIVE BREAKPOINTS
+           ======================================== */
+
+        /* --- 1. MOBILE (Portrait Phones) - Up to 480px --- */
+        @media (max-width: 480px) {
+            /* Navigation */
+            nav {
+                padding: 1rem 4%;
+                flex-wrap: wrap;
+                gap: 1rem;
             }
-            .image-group {
-                height: 300px;
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
                 display: none;
             }
-            .hero-content { display: flex; flex-direction: column; }
-            .image-group { display: block; width: 100%; max-width: 320px; margin: 0 auto; }
 
-            nav { padding: 1.5rem; }
-            .nav-links { display: none; }
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn-text {
+                display: none; /* Hide login on mobile */
+            }
+
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 1.5rem 4%;
+                min-height: auto;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .image-group {
+                display: none; /* Hide image groups on mobile */
+            }
+
+            .hero-text {
+                padding: 0;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            p.subtext {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-text .btn-primary {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+
+            /* Core Pillars */
+            .core-pillars {
+                padding: 3rem 4%;
+            }
 
             .pillars-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
+            .pillar-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pillar-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .pillar-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .pillar-card p {
+                font-size: 0.95rem;
+            }
+
+            /* Origin Story */
+            .origin-story {
+                padding: 3rem 4%;
+            }
+
             .origin-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2rem;
+            }
+
+            .origin-eyebrow {
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
             }
 
             .origin-text h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            .origin-text p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+                margin-bottom: 1rem;
+            }
+
+            .origin-image {
+                height: 250px;
+            }
+
+            .origin-image img {
+                height: 100%;
+            }
+
+            /* Get Involved CTA */
+            .get-involved {
+                padding: 3rem 4%;
+            }
+
+            .cta-content h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-content p {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .blob-decoration {
+                width: 200px;
+                height: 200px;
+                top: -30px;
+                right: 5%;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2.5rem 4% 1.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-column h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-column p,
+            .footer-column ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                font-size: 0.85rem;
+            }
+
+            /* Background Shapes */
+            .wave-top-left,
+            .wave-bottom-right {
+                opacity: 0.5; /* Reduce prominence on mobile */
+            }
+        }
+
+        /* --- 2. TABLET (Landscape Phones & Portrait Tablets) - 481px to 768px --- */
+        @media (min-width: 481px) and (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 1.25rem 4%;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .btn-text {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 2rem 4%;
+                min-height: 70vh;
+            }
+
+            .hero-content {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .image-group {
+                height: 280px;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .left-group {
+                order: 1;
+            }
+
+            .hero-text {
+                order: 2;
+                padding: 0 1rem;
+            }
+
+            .right-group {
+                display: none; /* Show only one image group on tablet */
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 1.25;
+                margin-bottom: 1.25rem;
+            }
+
+            p.subtext {
+                font-size: 1rem;
+                line-height: 1.65;
+                margin-bottom: 1.75rem;
+            }
+
+            /* Core Pillars */
+            .core-pillars {
+                padding: 4rem 4%;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .pillar-card {
+                padding: 2.5rem 2rem;
+            }
+
+            .pillar-icon {
+                font-size: 2.75rem;
+            }
+
+            .pillar-card h3 {
+                font-size: 1.35rem;
+            }
+
+            /* Origin Story */
+            .origin-story {
+                padding: 4.5rem 4%;
+            }
+
+            .origin-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                max-width: 650px;
+                margin: 0 auto;
+            }
+
+            .origin-text h2 {
+                font-size: 2rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .origin-text p {
+                font-size: 1rem;
+                line-height: 1.75;
+            }
+
+            .origin-image {
+                height: 300px;
+            }
+
+            /* Get Involved CTA */
+            .get-involved {
+                padding: 4.5rem 4%;
             }
 
             .cta-content h2 {
-                font-size: 2rem;
+                font-size: 2.15rem;
+            }
+
+            .cta-content p {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
             }
 
             .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+                gap: 1.25rem;
             }
 
             .btn-primary, .btn-secondary {
-                width: 100%;
-                max-width: 300px;
+                padding: 0.875rem 2.25rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3rem 4% 1.75rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- 3. LAPTOP / DESKTOP (Small Screens) - 769px to 1024px --- */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Navigation */
+            nav {
+                padding: 1.75rem 5%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.35rem;
+                font-size: 0.9rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 2rem 5%;
+                min-height: 75vh;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr 1.3fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .image-group {
+                height: 350px;
+            }
+
+            .left-group .large,
+            .right-group .large {
+                width: 240px;
+                height: 240px;
+            }
+
+            .left-group .small,
+            .right-group .small {
+                width: 120px;
+                height: 120px;
+            }
+
+            h1 {
+                font-size: 2.8rem;
+                line-height: 1.25;
+            }
+
+            p.subtext {
+                font-size: 1rem;
+            }
+
+            /* Core Pillars */
+            .core-pillars {
+                padding: 4.5rem 5%;
+            }
+
+            .pillars-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .pillar-card {
+                padding: 2.5rem 1.75rem;
+            }
+
+            .pillar-card h3 {
+                font-size: 1.35rem;
+            }
+
+            .pillar-card p {
+                font-size: 0.95rem;
+            }
+
+            /* Origin Story */
+            .origin-story {
+                padding: 5rem 5%;
+            }
+
+            .origin-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .origin-text h2 {
+                font-size: 2.2rem;
+            }
+
+            .origin-text p {
+                font-size: 1rem;
+            }
+
+            /* Get Involved CTA */
+            .get-involved {
+                padding: 5rem 5%;
+            }
+
+            .cta-content h2 {
+                font-size: 2.25rem;
+            }
+
+            .cta-content p {
+                font-size: 1.15rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3.5rem 5% 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* --- 4. LARGE DESKTOP (Wide Screens) - 1025px and above --- */
+        @media (min-width: 1025px) {
+            /* This is the default design, but we can add enhancements */
+
+            /* Max-width container for ultra-wide screens */
+            .hero-content,
+            .pillars-grid,
+            .origin-content,
+            .footer-content {
+                max-width: 1400px;
+            }
+
+            /* Ensure readability on very wide screens */
+            .cta-content {
+                max-width: 900px;
+            }
+
+            /* Enhance hover states for mouse users */
+            .btn-primary:hover,
+            .btn-secondary:hover {
+                transform: translateY(-3px);
+            }
+
+            .pillar-card:hover {
+                transform: translateY(-8px);
             }
         }
     </style>

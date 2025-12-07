@@ -337,42 +337,378 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 1024px) {
+        /* ========================================
+           RESPONSIVE BREAKPOINTS
+           ======================================== */
+
+        /* --- 1. MOBILE (Portrait Phones) - Up to 480px --- */
+        @media (max-width: 480px) {
+            /* Navigation */
             nav {
-                padding: 1.5rem;
+                padding: 1rem 4%;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
             }
 
             .nav-links {
                 display: none;
             }
 
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn-text {
+                display: none;
+            }
+
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
+            .background-shape {
+                width: 250px;
+                height: 250px;
+                top: 10%;
+                right: 5%;
+                opacity: 0.08;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 2rem 4% 2.5rem;
+            }
+
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.85rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* How It Works Section */
+            .how-it-works {
+                padding: 3rem 4%;
             }
 
             .steps-grid {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
+            }
+
+            .step-number {
+                font-size: 2.5rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .step h3 {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .step p {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+
+            /* Intake Card Section */
+            .intake-section {
+                padding: 3rem 4%;
             }
 
             .intake-card {
-                padding: 3rem 2rem;
+                padding: 2.5rem 1.75rem;
+                border-radius: 20px;
             }
 
             .intake-card.open h2,
             .intake-card.closed h2 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .status-text {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            }
+
+            .btn-intake {
+                padding: 1rem 2.5rem;
+                font-size: 0.95rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .disclaimer {
+                font-size: 0.85rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2.5rem 4% 1.5rem;
+                margin-top: 3rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-bottom: 2rem;
             }
 
+            .footer-column h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-column p,
+            .footer-column ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* --- 2. TABLET (Landscape Phones & Portrait Tablets) - 481px to 768px --- */
+        @media (min-width: 481px) and (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 1.25rem 4%;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .btn-text {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
             .background-shape {
-                width: 300px;
-                height: 300px;
+                width: 350px;
+                height: 350px;
+                opacity: 0.1;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 2.5rem 4% 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            /* How It Works Section */
+            .how-it-works {
+                padding: 4rem 4%;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .step-number {
+                font-size: 3rem;
+            }
+
+            .step h3 {
+                font-size: 1.3rem;
+            }
+
+            .step p {
+                font-size: 0.95rem;
+            }
+
+            /* Intake Card Section */
+            .intake-section {
+                padding: 4rem 4%;
+            }
+
+            .intake-card {
+                max-width: 650px;
+                padding: 3.25rem 2.75rem;
+            }
+
+            .intake-card.open h2,
+            .intake-card.closed h2 {
+                font-size: 2.15rem;
+            }
+
+            .status-text {
+                font-size: 1rem;
+                margin-bottom: 2.25rem;
+            }
+
+            .btn-intake {
+                padding: 1.05rem 2.75rem;
+                font-size: 1rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3rem 4% 1.75rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- 3. LAPTOP / DESKTOP (Small Screens) - 769px to 1024px --- */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Navigation */
+            nav {
+                padding: 1.75rem 5%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.35rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
+            .background-shape {
+                width: 450px;
+                height: 450px;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 3.5rem 5% 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            /* How It Works Section */
+            .how-it-works {
+                padding: 4.5rem 5%;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 3rem;
+            }
+
+            .step-number {
+                font-size: 3.25rem;
+            }
+
+            .step h3 {
+                font-size: 1.3rem;
+            }
+
+            .step p {
+                font-size: 0.95rem;
+            }
+
+            /* Intake Card Section */
+            .intake-section {
+                padding: 4.5rem 5%;
+            }
+
+            .intake-card {
+                padding: 3.5rem 3rem;
+            }
+
+            .intake-card.open h2,
+            .intake-card.closed h2 {
+                font-size: 2.3rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3.5rem 5% 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* --- 4. LARGE DESKTOP (Wide Screens) - 1025px and above --- */
+        @media (min-width: 1025px) {
+            /* Max-width containers for ultra-wide screens */
+            .steps-grid,
+            .footer-content {
+                max-width: 1400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .intake-card {
+                max-width: 750px;
+            }
+
+            /* Enhance hover states for mouse users */
+            .btn-primary:hover,
+            .btn-intake:hover {
+                transform: translateY(-3px);
+            }
+
+            /* Optimal background shape size */
+            .background-shape {
+                width: 500px;
+                height: 500px;
             }
         }
     </style>

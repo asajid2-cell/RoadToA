@@ -304,37 +304,313 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 1024px) {
+        /* ========================================
+           RESPONSIVE BREAKPOINTS
+           ======================================== */
+
+        /* --- 1. MOBILE (Portrait Phones) - Up to 480px --- */
+        @media (max-width: 480px) {
+            /* Navigation */
             nav {
-                padding: 1.5rem;
+                padding: 1rem 4%;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
             }
 
             .nav-links {
                 display: none;
             }
 
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn-text {
+                display: none;
+            }
+
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
+            .background-blob {
+                width: 300px;
+                height: 300px;
+                opacity: 0.1;
+            }
+
+            /* Contact Container */
+            .contact-container {
+                min-height: auto;
+                padding: 2rem 4%;
+            }
+
             .contact-card {
-                padding: 3rem 2rem;
+                padding: 2.5rem 1.75rem;
+                border-radius: 20px;
             }
 
             .contact-card h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .contact-card .subtitle {
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-card .instruction {
+                font-size: 0.9rem;
+                line-height: 1.5;
+                margin-bottom: 2rem;
+            }
+
+            .btn-contact-form {
+                padding: 1rem 2.25rem;
+                font-size: 0.95rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .divider {
+                margin: 2rem 0;
+            }
+
+            .direct-contact h3 {
+                font-size: 1rem;
+                margin-bottom: 1.25rem;
             }
 
             .contact-methods {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.75rem;
+            }
+
+            .contact-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .contact-method a,
+            .contact-method p {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2.5rem 4% 1.5rem;
+                margin-top: 3rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-bottom: 2rem;
             }
 
+            .footer-column h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-column p,
+            .footer-column ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* --- 2. TABLET (Landscape Phones & Portrait Tablets) - 481px to 768px --- */
+        @media (min-width: 481px) and (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 1.25rem 4%;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .btn-text {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
             .background-blob {
-                width: 400px;
-                height: 400px;
+                width: 450px;
+                height: 450px;
+                opacity: 0.12;
+            }
+
+            /* Contact Container */
+            .contact-container {
+                padding: 2.5rem 4%;
+            }
+
+            .contact-card {
+                max-width: 650px;
+                padding: 3.25rem 2.75rem;
+            }
+
+            .contact-card h1 {
+                font-size: 2.4rem;
+                margin-bottom: 1.35rem;
+            }
+
+            .contact-card .subtitle {
+                font-size: 1rem;
+                line-height: 1.65;
+                margin-bottom: 1.75rem;
+            }
+
+            .contact-card .instruction {
+                font-size: 0.95rem;
+                margin-bottom: 2.25rem;
+            }
+
+            .btn-contact-form {
+                padding: 1.05rem 2.75rem;
+                font-size: 1rem;
+                margin-bottom: 2.75rem;
+            }
+
+            .direct-contact h3 {
+                font-size: 1.05rem;
+            }
+
+            .contact-methods {
+                flex-direction: row;
+                gap: 2.5rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3rem 4% 1.75rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- 3. LAPTOP / DESKTOP (Small Screens) - 769px to 1024px --- */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Navigation */
+            nav {
+                padding: 1.75rem 5%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.35rem;
+                font-size: 0.9rem;
+            }
+
+            /* Background Decoration */
+            .background-blob {
+                width: 550px;
+                height: 550px;
+            }
+
+            /* Contact Container */
+            .contact-container {
+                padding: 3rem 5%;
+            }
+
+            .contact-card {
+                padding: 3.5rem 3rem;
+            }
+
+            .contact-card h1 {
+                font-size: 2.6rem;
+            }
+
+            .contact-card .subtitle {
+                font-size: 1.05rem;
+            }
+
+            .contact-card .instruction {
+                font-size: 0.98rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3.5rem 5% 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* --- 4. LARGE DESKTOP (Wide Screens) - 1025px and above --- */
+        @media (min-width: 1025px) {
+            /* Max-width containers for ultra-wide screens */
+            .contact-card {
+                max-width: 750px;
+            }
+
+            .footer-content {
+                max-width: 1400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Enhance hover states for mouse users */
+            .btn-primary:hover,
+            .btn-contact-form:hover {
+                transform: translateY(-3px);
+            }
+
+            .contact-method a:hover {
+                color: var(--terracotta);
+            }
+
+            /* Optimal background shape size */
+            .background-blob {
+                width: 600px;
+                height: 600px;
             }
         }
     </style>

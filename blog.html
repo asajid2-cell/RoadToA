@@ -389,28 +389,411 @@
             font-size: 0.9rem;
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 1024px) {
-            .nav-links { display: none; }
+        /* ========================================
+           RESPONSIVE BREAKPOINTS
+           ======================================== */
 
-            .blog-hero h1 { font-size: 2.5rem; }
+        /* --- 1. MOBILE (Portrait Phones) - Up to 480px --- */
+        @media (max-width: 480px) {
+            /* Navigation */
+            nav {
+                padding: 1rem 4%;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
 
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+            }
+
+            .btn-text {
+                display: none;
+            }
+
+            .btn-primary {
+                width: 100%;
+                text-align: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Blog Hero */
+            .blog-hero {
+                padding: 2rem 4% 2.5rem;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .blog-hero p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* Filter Bar */
             .filter-bar {
+                padding: 1.5rem 4%;
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .filter-bar h3 {
+                font-size: 0.9rem;
+            }
+
+            .category-filters {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.5rem 0.875rem;
+                font-size: 0.8rem;
+            }
+
+            /* Featured Post */
+            .featured-section {
+                padding: 2rem 4%;
             }
 
             .featured-post {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .featured-image {
+                height: 200px;
+            }
+
+            .category-tag {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.75rem;
+            }
+
+            .featured-content h2 {
+                font-size: 1.5rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .excerpt {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .post-meta {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .read-more {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Articles Grid */
+            .articles-section {
+                padding: 2rem 4% 3rem;
             }
 
             .articles-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .article-card {
+                padding: 1.25rem;
+            }
+
+            .article-image {
+                height: 180px;
+            }
+
+            .article-content h3 {
+                font-size: 1.15rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .article-content .excerpt {
+                font-size: 0.85rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .article-content .post-meta {
+                font-size: 0.75rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2.5rem 4% 1.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-column h4 {
+                font-size: 1.1rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-column p,
+            .footer-column ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-bottom {
+                padding-top: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* --- 2. TABLET (Landscape Phones & Portrait Tablets) - 481px to 768px --- */
+        @media (min-width: 481px) and (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 1.25rem 4%;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .btn-text {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            /* Blog Hero */
+            .blog-hero {
+                padding: 2.5rem 4% 3rem;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            /* Filter Bar */
+            .filter-bar {
+                padding: 1.75rem 4%;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.25rem;
+            }
+
+            .filter-bar h3 {
+                font-size: 0.95rem;
+            }
+
+            .category-filters {
+                gap: 0.625rem;
+            }
+
+            .category-btn {
+                padding: 0.55rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            /* Featured Post */
+            .featured-section {
+                padding: 2.5rem 4%;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .featured-content h2 {
+                font-size: 1.85rem;
+            }
+
+            .excerpt {
+                font-size: 0.95rem;
+            }
+
+            .post-meta {
+                font-size: 0.85rem;
+            }
+
+            /* Articles Grid */
+            .articles-section {
+                padding: 2.5rem 4% 3.5rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .article-card {
+                padding: 1.5rem;
+            }
+
+            .article-image {
+                height: 200px;
+            }
+
+            .article-content h3 {
+                font-size: 1.25rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3rem 4% 1.75rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --- 3. LAPTOP / DESKTOP (Small Screens) - 769px to 1024px --- */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Navigation */
+            nav {
+                padding: 1.75rem 5%;
+            }
+
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .btn-primary {
+                padding: 0.7rem 1.35rem;
+                font-size: 0.9rem;
+            }
+
+            /* Blog Hero */
+            .blog-hero {
+                padding: 3rem 5% 3.5rem;
+            }
+
+            .blog-hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .blog-hero p {
+                font-size: 1.05rem;
+            }
+
+            /* Filter Bar */
+            .filter-bar {
+                padding: 2rem 5%;
+            }
+
+            /* Featured Post */
+            .featured-section {
+                padding: 3rem 5%;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+                padding: 2.25rem;
+            }
+
+            .featured-image {
+                height: 280px;
+            }
+
+            .featured-content h2 {
+                font-size: 2rem;
+            }
+
+            /* Articles Grid */
+            .articles-section {
+                padding: 3rem 5% 4rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 3.5rem 5% 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        /* --- 4. LARGE DESKTOP (Wide Screens) - 1025px and above --- */
+        @media (min-width: 1025px) {
+            /* Max-width containers for ultra-wide screens */
+            .featured-post,
+            .articles-grid,
+            .footer-content {
+                max-width: 1400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Enhance hover states for mouse users */
+            .btn-primary:hover,
+            .read-more:hover {
+                transform: translateY(-3px);
+            }
+
+            .article-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
+
+            .category-btn:hover {
+                transform: translateY(-2px);
             }
         }
     </style>
