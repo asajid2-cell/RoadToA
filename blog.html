@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Student Guide - Road to A Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #FDF8F0;
+            --sage-green: #8FAA8B;
+            --terracotta: #C06C4F;
+            --text-dark: #2C1E1A;
+            --text-light: #5A4A46;
+            --white: #FFFFFF;
+            --mental-health: #8FAA8B;
+            --study-tips: #C06C4F;
+            --motivation: #D4A574;
+            --wellness: #9BBFB0;
+            --announcements: #757575;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: relative;
+            z-index: 10;
+            background-color: var(--bg-cream);
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracotta);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-text {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 108, 79, 0.3);
+        }
+
+        /* --- Blog Hero --- */
+        .blog-hero {
+            background-color: var(--sage-green);
+            padding: 5rem 5% 8rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .blog-hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            color: var(--bg-cream);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Search & Filter Bar --- */
+        .filter-bar {
+            background-color: var(--white);
+            padding: 2rem 5%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            position: relative;
+            margin-top: -3rem;
+            z-index: 10;
+            border-radius: 15px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .categories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .category-pill {
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: 2px solid var(--text-light);
+            background-color: transparent;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .category-pill:hover,
+        .category-pill.active {
+            background-color: var(--sage-green);
+            border-color: var(--sage-green);
+            color: var(--white);
+        }
+
+        /* --- Featured Post --- */
+        .featured-section {
+            padding: 5rem 5%;
+            background-color: var(--bg-cream);
+        }
+
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-tag.study-tips { background-color: var(--study-tips); color: white; }
+        .category-tag.mental-health { background-color: var(--mental-health); color: white; }
+        .category-tag.motivation { background-color: var(--motivation); color: white; }
+        .category-tag.wellness { background-color: var(--wellness); color: white; }
+        .category-tag.announcements { background-color: var(--announcements); color: white; }
+
+        .featured-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .featured-content .excerpt {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .read-more:hover {
+            transform: translateY(-2px);
+        }
+
+        /* --- Article Grid --- */
+        .articles-section {
+            padding: 3rem 5% 6rem;
+            background-color: var(--bg-cream);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover .article-image img {
+            transform: scale(1.05);
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .article-content .excerpt {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+
+            .blog-hero h1 { font-size: 2.5rem; }
+
+            .filter-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="site.html" class="logo">Road to A</a>
+
+        <ul class="nav-links">
+            <li><a href="site.html">Home</a></li>
+            <li><a href="request-tutor.html">Request a Tutor</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-text">Log in</a>
+            <a href="get-involved.html" class="btn-primary">Get Involved</a>
+        </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <h1>The Student Guide.</h1>
+        <p>Study tips, mental health advice, and honest stories from university mentors who have been in your shoes.</p>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+        <div class="categories">
+            <a href="#" class="category-pill active">All</a>
+            <a href="#" class="category-pill">Study Tips</a>
+            <a href="#" class="category-pill">Mental Health</a>
+            <a href="#" class="category-pill">Motivation</a>
+            <a href="#" class="category-pill">Wellness</a>
+        </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-section">
+        <article class="featured-post">
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student taking test">
+            </div>
+            <div class="featured-content">
+                <span class="category-tag study-tips">Study Tips</span>
+                <h2>Tests: Navigating the Stress of Evaluation</h2>
+                <p class="excerpt">Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.</p>
+                <p class="post-meta">Written by Sydney Peskett • May 19, 2021 • 3 min read</p>
+                <a href="blog-post.html?id=tests" class="read-more">Read Full Article</a>
+            </div>
+        </article>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="articles-section">
+        <div class="articles-grid">
+
+            <!-- Article 1: Mental Health -->
+            <a href="blog-post.html?id=mental-health" class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nature scene">
+                </div>
+                <div class="article-content">
+                    <span class="category-tag mental-health">Mental Health</span>
+                    <h3>5 Tips to Keep Your Mental Health High!</h3>
+                    <p class="excerpt">With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year...</p>
+                    <p class="post-meta">Shahab Marzoughi • May 2, 2021</p>
+                </div>
+            </a>
+
+            <!-- Article 2: Wellness -->
+            <a href="blog-post.html?id=wellness" class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Morning checklist">
+                </div>
+                <div class="article-content">
+                    <span class="category-tag wellness">Wellness</span>
+                    <h3>Good Mental Habits for Uncertain Times</h3>
+                    <p class="excerpt">The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue...</p>
+                    <p class="post-meta">Ayaad Sharif-Abdullah • Apr 19, 2021</p>
+                </div>
+            </a>
+
+            <!-- Article 3: Motivation -->
+            <a href="blog-post.html?id=motivation" class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Running track">
+                </div>
+                <div class="article-content">
+                    <span class="category-tag motivation">Motivation</span>
+                    <h3>"Many will start fast, few will finish strong."</h3>
+                    <p class="excerpt">At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax...</p>
+                    <p class="post-meta">Ahmad Refaat • Apr 13, 2021</p>
+                </div>
+            </a>
+
+            <!-- Article 4: Welcome -->
+            <a href="blog-post.html?id=welcome" class="article-card">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team collaboration">
+                </div>
+                <div class="article-content">
+                    <span class="category-tag announcements">Announcements</span>
+                    <h3>Welcome to the Blog!</h3>
+                    <p class="excerpt">This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals...</p>
+                    <p class="post-meta">Road to A Team • Apr 1, 2021</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Road to A</h4>
+                <p class="footer-tagline">Learning Together, Growing Together.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="site.html">Home</a></li>
+                    <li><a href="request-tutor.html">Request a Tutor</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: info@roadtoa.com</p>
+                <p>Email: RoadtoATutorg@gmail.com</p>
+                <p>Based in Edmonton, Canada</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Road to A. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

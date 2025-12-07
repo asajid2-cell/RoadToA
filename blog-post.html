@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Road to A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-cream: #FDF8F0;
+            --sage-green: #8FAA8B;
+            --terracotta: #C06C4F;
+            --text-dark: #2C1E1A;
+            --text-light: #5A4A46;
+            --white: #FFFFFF;
+            --light-sage: #D4E5D2;
+            --light-terracotta: #F4DCD4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracotta);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-text {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 108, 79, 0.3);
+        }
+
+        /* --- Back Button --- */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--sage-green);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin: 2rem 5%;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--terracotta);
+        }
+
+        .back-link::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* --- Article Container --- */
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 5% 5rem;
+        }
+
+        /* --- Article Header --- */
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-tag.study-tips {
+            background-color: var(--light-sage);
+            color: var(--sage-green);
+        }
+
+        .category-tag.mental-health {
+            background-color: var(--light-terracotta);
+            color: var(--terracotta);
+        }
+
+        .category-tag.wellness {
+            background-color: #E8F0F2;
+            color: #5A9DAE;
+        }
+
+        .category-tag.motivation {
+            background-color: #F9E9D2;
+            color: #C89446;
+        }
+
+        .category-tag.announcements {
+            background-color: #E8E4F3;
+            color: #7B68A8;
+        }
+
+        .article-header h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* --- Featured Image --- */
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Article Content --- */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+
+        .article-content p {
+            margin-bottom: 1.8rem;
+        }
+
+        .article-content strong {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-header h1 {
+                font-size: 2rem;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 5rem;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .error {
+            text-align: center;
+            padding: 5rem;
+            color: var(--terracotta);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="site.html" class="logo">Road to A</a>
+
+        <ul class="nav-links">
+            <li><a href="site.html">Home</a></li>
+            <li><a href="request-tutor.html">Request a Tutor</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="blog.html" class="active">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-text">Log in</a>
+            <a href="get-involved.html" class="btn-primary">Get Involved</a>
+        </div>
+    </nav>
+
+    <a href="blog.html" class="back-link">Back to Blog</a>
+
+    <div id="article-root">
+        <div class="loading">Loading article...</div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+
+            <div class="footer-column">
+                <h4>Road to A</h4>
+                <p class="footer-tagline">Learning Together, Growing Together.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="site.html">Home</a></li>
+                    <li><a href="request-tutor.html">Request a Tutor</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: info@roadtoa.com</p>
+                <p>Email: RoadtoATutorg@gmail.com</p>
+                <p>Based in Edmonton, Canada</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Road to A. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Embedded blog data (from blog-posts.json)
+        const BLOG_DATA = {
+            "posts": [
+                {
+                    "id": "tests",
+                    "title": "Tests: Navigating the Stress of Evaluation",
+                    "author": "Sydney Peskett",
+                    "date": "May 19, 2021",
+                    "readTime": "3 min read",
+                    "category": "Study Tips",
+                    "excerpt": "Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.",
+                    "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "content": [
+                        "Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.",
+                        "At Road to A, we believe that conquering tests isn't just about memorizing facts—it's about managing your mindset. Here are three strategies to lower the temperature on test day:",
+                        "**Simulate the Environment:** Don't just study on your bed. Sit at a desk, set a timer, and practice recalling information without looking at your notes. This trains your brain to function under \"exam conditions\" so the real thing feels less shocking.",
+                        "**The \"Brain Dump\" Method:** The moment the test starts, write down any formulas, dates, or mnemonics you are afraid of forgetting on the back of the exam paper. This offloads the information from your working memory, reducing cognitive load and anxiety.",
+                        "**Post-Test Perspective:** Regardless of the grade, every test is data. It tells you what study methods worked and what didn't. Treat it as a diagnostic tool for your future success, not a judgment of your intelligence.",
+                        "Remember, a grade is a snapshot of your performance on one day, not a definition of your potential."
+                    ]
+                },
+                {
+                    "id": "mental-health",
+                    "title": "5 Tips to Keep Your Mental Health High!",
+                    "author": "Shahab Marzoughi",
+                    "date": "May 2, 2021",
+                    "readTime": "4 min read",
+                    "category": "Mental Health",
+                    "excerpt": "With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year...",
+                    "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "content": [
+                        "With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year. As a Psychology student, I often see how easy it is to sacrifice well-being for grades—but the truth is, you need a healthy mind to achieve those high marks.",
+                        "Here are 5 actionable tips to keep your mental health in check:",
+                        "**1. Prioritize Sleep Hygiene:** It sounds cliché, but your brain consolidates memory while you sleep. Pulling an all-nighter actually erases some of the work you did during the day. Aim for 7-8 hours.",
+                        "**2. The 50/10 Rule:** For every 50 minutes of focused work, take a 10-minute break completely away from screens. Walk outside, stretch, or grab a snack.",
+                        "**3. Connect, Don't just \"Like\":** Scrolling through social media can increase feelings of isolation. Instead, call a friend or study via FaceTime. Genuine connection releases oxytocin, which lowers stress.",
+                        "**4. Move Your Body:** You don't need to run a marathon. A 15-minute walk resets your dopamine levels and improves focus.",
+                        "**5. Ask for Help:** Strength isn't about doing it all alone. Whether it's asking a teacher for an extension or reaching out to a Road to A tutor for help with a difficult concept, advocating for yourself is a vital skill."
+                    ]
+                },
+                {
+                    "id": "wellness",
+                    "title": "Good Mental Habits for Uncertain Times",
+                    "author": "Ayaad Sharif-Abdullah",
+                    "date": "Apr 19, 2021",
+                    "readTime": "3 min read",
+                    "category": "Wellness",
+                    "excerpt": "The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue...",
+                    "image": "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "content": [
+                        "The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue. For high school students, the loss of regular social interaction and the shift to online learning has blurred the lines between \"home\" and \"school,\" making it hard to switch off.",
+                        "Building good mental habits is the key to navigating this uncertainty.",
+                        "**Establish a Routine:** When your environment doesn't change, your routine must. Wake up at the same time, get dressed as if you are going to school, and designate a specific spot for studying that is not your bed. This cues your brain that it is time to work, and more importantly, allows you to \"leave\" school when the day is done.",
+                        "**Practice Gratitude:** It is easy to focus on what we have lost this year. Try writing down three small things you are grateful for every morning. It could be as simple as a good cup of coffee or a sunny afternoon. This simple habit rewires your brain to scan the world for positives rather than threats.",
+                        "We are all in this together. Be patient with yourself."
+                    ]
+                },
+                {
+                    "id": "motivation",
+                    "title": "\"Many will start fast, few will finish strong.\"",
+                    "author": "Ahmad Refaat",
+                    "date": "Apr 13, 2021",
+                    "readTime": "3 min read",
+                    "category": "Motivation",
+                    "excerpt": "At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax...",
+                    "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "content": [
+                        "At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax. We call this \"The Slump.\" The excitement of the new semester has faded, but the finish line still feels far away.",
+                        "This is the critical moment that separates good students from great ones.",
+                        "Gary Ryan Blair's quote reminds us that starting is easy. Everyone starts with high energy and new binders. But character is built in the final 20% of the journey—when you are tired, when the material gets hard, and when the weather gets nice outside.",
+                        "**How to Finish Strong:**",
+                        "**Visualize the End:** Picture the feeling of handing in that last assignment. Hold onto that relief and use it as fuel.",
+                        "**One Day at a Time:** Don't look at the mountain of work ahead. Look at the three things you need to do today.",
+                        "**Remember Your \"Why\":** Why are you pursuing these grades? Is it for a specific university program? A career path? Remind yourself of the bigger picture.",
+                        "Push through. You are closer than you think."
+                    ]
+                },
+                {
+                    "id": "welcome",
+                    "title": "Welcome to the Blog!",
+                    "author": "Road to A Team",
+                    "date": "Apr 1, 2021",
+                    "readTime": "2 min read",
+                    "category": "Announcements",
+                    "excerpt": "This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals...",
+                    "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+                    "content": [
+                        "Welcome to the official Road to A blog!",
+                        "This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals. While our primary mission is to provide free, high-quality tutoring to help you \"leave the nest\" and succeed in university, we know that school is about more than just textbooks.",
+                        "**What you can expect from this space:**",
+                        "**Study Hacks:** Proven methods from university students who have mastered the art of learning.",
+                        "**University Prep:** Honest advice on what the transition from High School to University is really like.",
+                        "**Mental Health:** Resources and stories to help you manage stress and anxiety.",
+                        "**Team Updates:** News about our volunteer opportunities and new tutor availability.",
+                        "We are thrilled to have you here. Let's learn and grow together."
+                    ]
+                }
+            ]
+        };
+
+        // Get post ID from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        // Format content with bold markdown
+        function formatContent(text) {
+            return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+
+        // Get category class
+        function getCategoryClass(category) {
+            return category.toLowerCase().replace(/\s+/g, '-');
+        }
+
+        // Load and display the blog post
+        function loadPost() {
+            const root = document.getElementById('article-root');
+
+            if (!postId) {
+                root.innerHTML = '<div class="error"><h2>No post specified</h2><p>Please select a blog post from the <a href="blog.html">blog page</a>.</p></div>';
+                return;
+            }
+
+            const post = BLOG_DATA.posts.find(p => p.id === postId);
+
+            if (!post) {
+                root.innerHTML = '<div class="error"><h2>Post not found</h2><p>The requested blog post could not be found. <a href="blog.html">Return to blog</a>.</p></div>';
+                return;
+            }
+
+            // Update page title
+            document.title = `${post.title} - Road to A`;
+
+            // Render the post
+            const contentHTML = post.content.map(p => `<p>${formatContent(p)}</p>`).join('');
+
+            root.innerHTML = `
+                <article class="article-container">
+                    <div class="article-header">
+                        <span class="category-tag ${getCategoryClass(post.category)}">${post.category}</span>
+                        <h1>${post.title}</h1>
+                        <div class="article-meta">
+                            <span>✍️ ${post.author}</span>
+                            <span>📅 ${post.date}</span>
+                            <span>⏱️ ${post.readTime}</span>
+                        </div>
+                    </div>
+
+                    <div class="featured-image">
+                        <img src="${post.image}" alt="${post.title}">
+                    </div>
+
+                    <div class="article-content">
+                        ${contentHTML}
+                    </div>
+                </article>
+            `;
+        }
+
+        // Load post when page loads
+        loadPost();
+    </script>
+
+</body>
+</html>

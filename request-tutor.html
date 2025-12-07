@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Tutor - Road to A</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette extracted from your design mockup */
+            --bg-cream: #FDF8F0;
+            --sage-green: #8FAA8B;
+            --terracotta: #C06C4F;
+            --text-dark: #2C1E1A;
+            --text-light: #5A4A46;
+            --white: #FFFFFF;
+            --grey: #D3D3D3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracotta);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .btn-text {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(192, 108, 79, 0.3);
+        }
+
+        /* --- Background Decoration --- */
+        .background-shape {
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background-color: var(--terracotta);
+            opacity: 0.12;
+            z-index: 0;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            padding: 4rem 5% 5rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* --- How It Works Section --- */
+        .how-it-works {
+            background-color: var(--white);
+            padding: 5rem 5%;
+            position: relative;
+            z-index: 5;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            color: var(--sage-green);
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        /* --- Intake Card Section --- */
+        .intake-section {
+            padding: 5rem 5%;
+            background-color: var(--bg-cream);
+            position: relative;
+            z-index: 5;
+        }
+
+        .intake-card {
+            background-color: var(--sage-green);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 3.5rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        /* --- OPEN State (Default) --- */
+        .intake-card.open h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .intake-card.open .status-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--bg-cream);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-intake {
+            background-color: var(--white);
+            color: var(--sage-green);
+            padding: 1.1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-intake:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            color: rgba(253, 248, 240, 0.8);
+            font-style: italic;
+        }
+
+        /* --- CLOSED State (Waitlist) --- */
+        /* To activate: Change class from "open" to "closed" on the intake-card div */
+        .intake-card.closed {
+            background-color: var(--white);
+            border: 2px solid var(--grey);
+        }
+
+        .intake-card.closed h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .intake-card.closed .status-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .intake-card.closed .btn-intake {
+            background-color: var(--grey);
+            color: var(--text-dark);
+            cursor: not-allowed;
+        }
+
+        .intake-card.closed .btn-intake:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .intake-card.closed .disclaimer {
+            color: var(--text-light);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+            position: relative;
+            z-index: 5;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-tagline {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--terracotta);
+        }
+
+        .footer-column p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .intake-card {
+                padding: 3rem 2rem;
+            }
+
+            .intake-card.open h2,
+            .intake-card.closed h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .background-shape {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-shape"></div>
+
+    <nav>
+        <a href="site.html" class="logo">Road to A</a>
+
+        <ul class="nav-links">
+            <li><a href="site.html">Home</a></li>
+            <li><a href="request-tutor.html" class="active">Request a Tutor</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="#" class="btn-text">Log in</a>
+            <a href="get-involved.html" class="btn-primary">Get Involved</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Academic support, without the barrier.</h1>
+        <p>Road to A provides free, high-quality tutoring for high school students. Whether you need help prepping for a diploma exam or just understanding yesterday's math lesson, we are here to help you succeed.</p>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="steps-grid">
+
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">01</div>
+                <h3>Request Help</h3>
+                <p>Fill out the intake form below. Tell us your grade, the subject you need help with, and your general availability.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">02</div>
+                <h3>Get Matched</h3>
+                <p>Our team reviews your request and pairs you with a university-level tutor who specializes in that specific subject area.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">03</div>
+                <h3>Start Learning</h3>
+                <p>You'll receive an email connecting you to your tutor. From there, you can schedule your first virtual session at a time that works for you.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Intake Card Section -->
+    <section class="intake-section">
+
+        <!-- OPEN State (Default) -->
+        <!-- To close intake: Change class from "open" to "closed" -->
+        <div class="intake-card open">
+            <h2>Ready to boost your grades?</h2>
+            <p class="status-text">Our tutoring roster is currently <strong>OPEN</strong>. Please have your school schedule handy so you can let us know when you are free.</p>
+
+            <!-- TODO: Replace '#' with your Student Google Form link -->
+            <a href="#" target="_blank" class="btn-intake">Request a Tutor</a>
+
+            <p class="disclaimer">All tutoring sessions are conducted virtually for the safety and convenience of our students and mentors.</p>
+        </div>
+
+        <!-- CLOSED State (Waitlist) - COMMENTED OUT BY DEFAULT -->
+        <!-- Uncomment this section and comment out the OPEN section above when at capacity -->
+        <!--
+        <div class="intake-card closed">
+            <h2>We are currently at capacity.</h2>
+            <p class="status-text">Due to high demand, we are currently short on available tutors. We are pausing new intakes to ensure our current students get the attention they deserve. Please check back soon!</p>
+
+            <a href="#" class="btn-intake" style="pointer-events: none;">Join Waitlist (Coming Soon)</a>
+
+            <p class="disclaimer">Thank you for your patience as we work to expand our volunteer roster.</p>
+        </div>
+        -->
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+
+            <div class="footer-column">
+                <h4>Road to A</h4>
+                <p class="footer-tagline">Learning Together, Growing Together.</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="site.html">Home</a></li>
+                    <li><a href="request-tutor.html">Request a Tutor</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: info@roadtoa.com</p>
+                <p>Email: RoadtoATutorg@gmail.com</p>
+                <p>Based in Edmonton, Canada</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Road to A. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

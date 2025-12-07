@@ -1,0 +1,98 @@
+{
+  "posts": [
+    {
+      "id": "tests",
+      "title": "Tests: Navigating the Stress of Evaluation",
+      "author": "Sydney Peskett",
+      "date": "May 19, 2021",
+      "readTime": "3 min read",
+      "category": "Study Tips",
+      "excerpt": "Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.",
+      "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "content": [
+        "Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.",
+        "At Road to A, we believe that conquering tests isn't just about memorizing facts—it's about managing your mindset. Here are three strategies to lower the temperature on test day:",
+        "**Simulate the Environment:** Don't just study on your bed. Sit at a desk, set a timer, and practice recalling information without looking at your notes. This trains your brain to function under \"exam conditions\" so the real thing feels less shocking.",
+        "**The \"Brain Dump\" Method:** The moment the test starts, write down any formulas, dates, or mnemonics you are afraid of forgetting on the back of the exam paper. This offloads the information from your working memory, reducing cognitive load and anxiety.",
+        "**Post-Test Perspective:** Regardless of the grade, every test is data. It tells you what study methods worked and what didn't. Treat it as a diagnostic tool for your future success, not a judgment of your intelligence.",
+        "Remember, a grade is a snapshot of your performance on one day, not a definition of your potential."
+      ]
+    },
+    {
+      "id": "mental-health",
+      "title": "5 Tips to Keep Your Mental Health High!",
+      "author": "Shahab Marzoughi",
+      "date": "May 2, 2021",
+      "readTime": "4 min read",
+      "category": "Mental Health",
+      "excerpt": "With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year...",
+      "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "content": [
+        "With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year. As a Psychology student, I often see how easy it is to sacrifice well-being for grades—but the truth is, you need a healthy mind to achieve those high marks.",
+        "Here are 5 actionable tips to keep your mental health in check:",
+        "**1. Prioritize Sleep Hygiene:** It sounds cliché, but your brain consolidates memory while you sleep. Pulling an all-nighter actually erases some of the work you did during the day. Aim for 7-8 hours.",
+        "**2. The 50/10 Rule:** For every 50 minutes of focused work, take a 10-minute break completely away from screens. Walk outside, stretch, or grab a snack.",
+        "**3. Connect, Don't just \"Like\":** Scrolling through social media can increase feelings of isolation. Instead, call a friend or study via FaceTime. Genuine connection releases oxytocin, which lowers stress.",
+        "**4. Move Your Body:** You don't need to run a marathon. A 15-minute walk resets your dopamine levels and improves focus.",
+        "**5. Ask for Help:** Strength isn't about doing it all alone. Whether it's asking a teacher for an extension or reaching out to a Road to A tutor for help with a difficult concept, advocating for yourself is a vital skill."
+      ]
+    },
+    {
+      "id": "wellness",
+      "title": "Good Mental Habits for Uncertain Times",
+      "author": "Ayaad Sharif-Abdullah",
+      "date": "Apr 19, 2021",
+      "readTime": "3 min read",
+      "category": "Wellness",
+      "excerpt": "The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue...",
+      "image": "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "content": [
+        "The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue. For high school students, the loss of regular social interaction and the shift to online learning has blurred the lines between \"home\" and \"school,\" making it hard to switch off.",
+        "Building good mental habits is the key to navigating this uncertainty.",
+        "**Establish a Routine:** When your environment doesn't change, your routine must. Wake up at the same time, get dressed as if you are going to school, and designate a specific spot for studying that is not your bed. This cues your brain that it is time to work, and more importantly, allows you to \"leave\" school when the day is done.",
+        "**Practice Gratitude:** It is easy to focus on what we have lost this year. Try writing down three small things you are grateful for every morning. It could be as simple as a good cup of coffee or a sunny afternoon. This simple habit rewires your brain to scan the world for positives rather than threats.",
+        "We are all in this together. Be patient with yourself."
+      ]
+    },
+    {
+      "id": "motivation",
+      "title": "\"Many will start fast, few will finish strong.\"",
+      "author": "Ahmad Refaat",
+      "date": "Apr 13, 2021",
+      "readTime": "3 min read",
+      "category": "Motivation",
+      "excerpt": "At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax...",
+      "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "content": [
+        "At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax. We call this \"The Slump.\" The excitement of the new semester has faded, but the finish line still feels far away.",
+        "This is the critical moment that separates good students from great ones.",
+        "Gary Ryan Blair's quote reminds us that starting is easy. Everyone starts with high energy and new binders. But character is built in the final 20% of the journey—when you are tired, when the material gets hard, and when the weather gets nice outside.",
+        "**How to Finish Strong:**",
+        "**Visualize the End:** Picture the feeling of handing in that last assignment. Hold onto that relief and use it as fuel.",
+        "**One Day at a Time:** Don't look at the mountain of work ahead. Look at the three things you need to do today.",
+        "**Remember Your \"Why\":** Why are you pursuing these grades? Is it for a specific university program? A career path? Remind yourself of the bigger picture.",
+        "Push through. You are closer than you think."
+      ]
+    },
+    {
+      "id": "welcome",
+      "title": "Welcome to the Blog!",
+      "author": "Road to A Team",
+      "date": "Apr 1, 2021",
+      "readTime": "2 min read",
+      "category": "Announcements",
+      "excerpt": "This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals...",
+      "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+      "content": [
+        "Welcome to the official Road to A blog!",
+        "This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals. While our primary mission is to provide free, high-quality tutoring to help you \"leave the nest\" and succeed in university, we know that school is about more than just textbooks.",
+        "**What you can expect from this space:**",
+        "**Study Hacks:** Proven methods from university students who have mastered the art of learning.",
+        "**University Prep:** Honest advice on what the transition from High School to University is really like.",
+        "**Mental Health:** Resources and stories to help you manage stress and anxiety.",
+        "**Team Updates:** News about our volunteer opportunities and new tutor availability.",
+        "We are thrilled to have you here. Let's learn and grow together."
+      ]
+    }
+  ]
+}
