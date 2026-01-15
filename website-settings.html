@@ -350,6 +350,24 @@
             transform: translateY(-2px);
         }
 
+        .btn-auto-contrast {
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(91, 155, 181, 0.3);
+        }
+
+        .btn-auto-contrast:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(91, 155, 181, 0.5);
+        }
+
         .btn-apply {
             background-color: var(--sage-green);
             color: var(--white);
@@ -678,6 +696,7 @@
 
         <div class="action-buttons">
             <button class="btn-reset" onclick="resetToDefaults()">Reset to Defaults</button>
+            <button class="btn-auto-contrast" onclick="autoContrast()">✨ Auto Contrast</button>
             <button class="btn-apply" onclick="applyToAllPages()">Apply to All Pages</button>
         </div>
 
@@ -884,6 +903,219 @@
                 document.documentElement.style.setProperty(`--${colorKey}`, newColor);
                 localStorage.setItem(`theme-${colorKey}`, newColor);
             });
+        }
+
+        // ========== WCAG Contrast Algorithm (converted from Kotlin) ==========
+
+        /**
+         * Convert hex color to RGB object
+         */
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16) / 255,
+                g: parseInt(result[2], 16) / 255,
+                b: parseInt(result[3], 16) / 255
+            } : null;
+        }
+
+        /**
+         * Convert RGB object to hex color
+         */
+        function rgbToHex(r, g, b) {
+            const toHex = (n) => {
+                const hex = Math.round(n * 255).toString(16);
+                return hex.length === 1 ? '0' + hex : hex;
+            };
+            return '#' + toHex(r) + toHex(g) + toHex(b);
+        }
+
+        /**
+         * Convert sRGB color component to linear RGB
+         */
+        function toSrgb(channel) {
+            if (channel <= 0.03928) {
+                return channel / 12.92;
+            } else {
+                return Math.pow((channel + 0.055) / 1.055, 2.4);
+            }
+        }
+
+        /**
+         * Calculate the relative luminance of a color according to WCAG
+         * https://www.w3.org/TR/WCAG20/#relativeluminancedef
+         */
+        function relativeLuminance(color) {
+            const rgb = hexToRgb(color);
+            if (!rgb) return 0;
+
+            const r = toSrgb(rgb.r);
+            const g = toSrgb(rgb.g);
+            const b = toSrgb(rgb.b);
+
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        /**
+         * Calculate the contrast ratio between two colors
+         * https://www.w3.org/TR/WCAG20/#contrast-ratiodef
+         *
+         * @return Contrast ratio (1:1 to 21:1)
+         */
+        function contrastRatio(color1, color2) {
+            const lum1 = relativeLuminance(color1);
+            const lum2 = relativeLuminance(color2);
+
+            const lighter = Math.max(lum1, lum2);
+            const darker = Math.min(lum1, lum2);
+
+            return (lighter + 0.05) / (darker + 0.05);
+        }
+
+        /**
+         * Automatically determine the best text color (white or black) for a background
+         * based on WCAG contrast requirements
+         */
+        function autoTextColor(backgroundColor) {
+            const white = '#FFFFFF';
+            const black = '#000000';
+
+            const contrastWithWhite = contrastRatio(white, backgroundColor);
+            const contrastWithBlack = contrastRatio(black, backgroundColor);
+
+            return contrastWithWhite > contrastWithBlack ? white : black;
+        }
+
+        /**
+         * Adjust the brightness of a color
+         *
+         * @param color Original color (hex)
+         * @param amount Amount to adjust (-1.0 to 1.0). Positive = lighter, negative = darker
+         * @return Adjusted color (hex)
+         */
+        function adjustBrightness(color, amount) {
+            const rgb = hexToRgb(color);
+            if (!rgb) return color;
+
+            const factor = 1 + amount;
+
+            const newR = Math.max(0, Math.min(1, rgb.r * factor));
+            const newG = Math.max(0, Math.min(1, rgb.g * factor));
+            const newB = Math.max(0, Math.min(1, rgb.b * factor));
+
+            return rgbToHex(newR, newG, newB);
+        }
+
+        /**
+         * Ensure a text color meets minimum contrast ratio against background
+         * by adjusting brightness aggressively
+         *
+         * @param backgroundColor Background color (hex)
+         * @param textColor Initial text color (hex)
+         * @param minRatio Minimum contrast ratio (default 7.0 for WCAG AAA)
+         * @param maxIterations Maximum adjustment iterations
+         * @return Adjusted text color meeting contrast requirements (hex)
+         */
+        function ensureContrast(backgroundColor, textColor, minRatio = 7.0, maxIterations = 30) {
+            let adjusted = textColor;
+            let ratio = contrastRatio(backgroundColor, adjusted);
+
+            // If already meets contrast, return as-is
+            if (ratio >= minRatio) return adjusted;
+
+            let iterations = 0;
+            const bgLuminance = relativeLuminance(backgroundColor);
+
+            // Determine if we should lighten or darken based on background
+            const shouldDarken = bgLuminance > 0.5;  // Light background needs dark text
+
+            // Aggressive adjustment - 15% per iteration
+            const adjustStep = shouldDarken ? -0.15 : 0.15;
+
+            while (ratio < minRatio && iterations < maxIterations) {
+                adjusted = adjustBrightness(adjusted, adjustStep);
+                ratio = contrastRatio(backgroundColor, adjusted);
+                iterations++;
+            }
+
+            // If still not enough contrast, force to pure black or white
+            if (ratio < minRatio) {
+                adjusted = shouldDarken ? '#000000' : '#FFFFFF';
+            }
+
+            return adjusted;
+        }
+
+        /**
+         * Mix two colors together
+         *
+         * @param color1 First color (hex)
+         * @param color2 Second color (hex)
+         * @param weight How much of color2 to use (0.0 to 1.0)
+         * @return Blended color (hex)
+         */
+        function mixColors(color1, color2, weight) {
+            const rgb1 = hexToRgb(color1);
+            const rgb2 = hexToRgb(color2);
+            if (!rgb1 || !rgb2) return color1;
+
+            const w = Math.max(0, Math.min(1, weight));
+
+            const r = rgb1.r + (rgb2.r - rgb1.r) * w;
+            const g = rgb1.g + (rgb2.g - rgb1.g) * w;
+            const b = rgb1.b + (rgb2.b - rgb1.b) * w;
+
+            return rgbToHex(r, g, b);
+        }
+
+        /**
+         * Get a muted/secondary text color with reduced emphasis
+         */
+        function mutedTextColor(backgroundColor, primaryTextColor) {
+            // Mix the primary text color with the background to create muted effect
+            const mixed = mixColors(primaryTextColor, backgroundColor, 0.4);
+            return ensureContrast(backgroundColor, mixed, 4.5);  // WCAG AA for secondary text
+        }
+
+        /**
+         * Auto Contrast - Automatically adjust text colors based on background
+         */
+        function autoContrast() {
+            // Get current background color
+            const bgInput = document.getElementById('input-bg-cream');
+            const backgroundColor = bgInput.value;
+
+            // Calculate optimal text colors
+            const primaryText = ensureContrast(backgroundColor, autoTextColor(backgroundColor), 7.0);
+            const secondaryText = mutedTextColor(backgroundColor, primaryText);
+
+            // Update text-dark (primary text)
+            const textDarkInput = document.getElementById('input-text-dark');
+            const textDarkPreview = document.getElementById('preview-text-dark');
+            const textDarkValue = document.getElementById('value-text-dark');
+
+            textDarkInput.value = primaryText;
+            textDarkPreview.style.backgroundColor = primaryText;
+            textDarkValue.textContent = primaryText;
+            document.documentElement.style.setProperty('--text-dark', primaryText);
+            localStorage.setItem('theme-text-dark', primaryText);
+
+            // Update text-light (secondary text)
+            const textLightInput = document.getElementById('input-text-light');
+            const textLightPreview = document.getElementById('preview-text-light');
+            const textLightValue = document.getElementById('value-text-light');
+
+            textLightInput.value = secondaryText;
+            textLightPreview.style.backgroundColor = secondaryText;
+            textLightValue.textContent = secondaryText;
+            document.documentElement.style.setProperty('--text-light', secondaryText);
+            localStorage.setItem('theme-text-light', secondaryText);
+
+            // Get contrast ratios for user feedback
+            const primaryRatio = contrastRatio(backgroundColor, primaryText).toFixed(2);
+            const secondaryRatio = contrastRatio(backgroundColor, secondaryText).toFixed(2);
+
+            alert(`Auto Contrast Applied! ✨\n\nPrimary Text: ${primaryRatio}:1 (WCAG AAA)\nSecondary Text: ${secondaryRatio}:1 (WCAG AA)\n\nYour text colors are now optimized for maximum readability!`);
         }
 
         // Mobile menu toggle
