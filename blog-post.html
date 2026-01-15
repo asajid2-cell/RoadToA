@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="theme-loader.js"></script>
 
     <style>
         :root {
@@ -254,6 +255,63 @@
         .article-content strong {
             font-weight: 700;
             color: var(--text-dark);
+        }
+
+        /* --- Vote Buttons --- */
+        .vote-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: var(--light-sage);
+            border-radius: 12px;
+            justify-content: center;
+        }
+
+        .vote-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--sage-green);
+            background-color: var(--white);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .vote-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .vote-button.active {
+            background-color: var(--sage-green);
+            color: var(--white);
+        }
+
+        .vote-button.upvote.active {
+            background-color: var(--sage-green);
+        }
+
+        .vote-button.downvote.active {
+            background-color: var(--terracotta);
+            border-color: var(--terracotta);
+        }
+
+        .vote-count {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .vote-text {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            text-align: center;
         }
 
         /* --- Footer --- */
@@ -736,14 +794,13 @@
             <li><a href="team.html">Our Team</a></li>
             <li><a href="blog.html" class="active">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="website-settings.html">Settings</a></li>
             <div class="nav-actions mobile-actions">
-                <a href="#" class="btn-text">Log in</a>
                 <a href="get-involved.html" class="btn-primary">Get Involved</a>
             </div>
         </ul>
 
         <div class="nav-actions">
-            <a href="#" class="btn-text">Log in</a>
             <a href="get-involved.html" class="btn-primary">Get Involved</a>
         </div>
     </nav>
@@ -791,6 +848,23 @@
         // Embedded blog data (from blog-posts.json)
         const BLOG_DATA = {
             "posts": [
+                {
+                    "id": "procrastination",
+                    "title": "Breaking the Cycle of Procrastination",
+                    "author": "Sharaf Yasir",
+                    "date": "January 15, 2026",
+                    "readTime": "4 min read",
+                    "category": "Study Tips",
+                    "excerpt": "Procrastination is something everyone faces at least once during their studies, but it can be one of the biggest obstacles to academic success. Learn three strategies to kick off this new year by thinking less and doing more.",
+                    "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                    "content": [
+                        "Procrastination is something everyone faces at least once during their studies, but it can be one of the biggest obstacles to academic success. Distractions, avoidance, and fear of failure can often take over the moment it's time to study. At Road to A, we believe that beating procrastination is less about forcing motivation and more about creating systems of habits that make starting easier. Here are three strategies you can use to kick off this new year by thinking less and doing more:",
+                        "**Shrink the task:** When you stare at big goals like \"study for the chemistry midterm\", it may seem daunting and unclear in its process. Instead, you can break them down into small, actionable steps: \"review two pages today, and two tomorrow,\" \"do five practice pages,\" \"summarize one chapter,\" etc. Small tasks reduce mental resistance and make it easier to begin.",
+                        "**Use timers:** Tell yourself you only have to work for 20–30 minutes. Set a timer and focus until the timer ends. Tell yourself you will not allow yourself to be distracted before the timer runs out, because your immediate reward for your perseverance will be a break (that is taken in moderation).",
+                        "**Manage your environment:** Relying on willpower alone isn't sustainable. Study in a place conducive to focus, like a library, a desk, or a quiet corner. Keep your phone out of reach, close all extra tabs, and make sure your workspace has only the essentials you need to get the work done.",
+                        "Remember that procrastination is not a part of who you are. Procrastination is nothing more than a stress response. Every time you choose to start, no matter how imperfectly, you weaken this stress response and strengthen healthy study habits."
+                    ]
+                },
                 {
                     "id": "tests",
                     "title": "Tests: Navigating the Stress of Evaluation",
@@ -943,8 +1017,97 @@
                     <div class="article-content">
                         ${contentHTML}
                     </div>
+
+                    <div class="vote-section">
+                        <button class="vote-button upvote" onclick="vote('${post.id}', 'up')">
+                            👍 <span class="vote-count" id="upvote-${post.id}">0</span>
+                        </button>
+                        <span class="vote-text">Was this helpful?</span>
+                        <button class="vote-button downvote" onclick="vote('${post.id}', 'down')">
+                            👎 <span class="vote-count" id="downvote-${post.id}">0</span>
+                        </button>
+                    </div>
                 </article>
             `;
+
+            // Load and display vote counts
+            updateVoteDisplay(post.id);
+        }
+
+        // Simple voting system with localStorage
+        function vote(postId, type) {
+            // Get current votes from localStorage
+            const votes = JSON.parse(localStorage.getItem('blogVotes') || '{}');
+
+            // Initialize post votes if not exists
+            if (!votes[postId]) {
+                votes[postId] = { up: 0, down: 0, userVote: null };
+            }
+
+            const postVotes = votes[postId];
+            const upButton = document.querySelector('.vote-button.upvote');
+            const downButton = document.querySelector('.vote-button.downvote');
+
+            // Handle vote logic
+            if (type === 'up') {
+                if (postVotes.userVote === 'up') {
+                    // Unvote
+                    postVotes.up--;
+                    postVotes.userVote = null;
+                    upButton.classList.remove('active');
+                } else {
+                    // New upvote
+                    if (postVotes.userVote === 'down') {
+                        postVotes.down--;
+                        downButton.classList.remove('active');
+                    }
+                    postVotes.up++;
+                    postVotes.userVote = 'up';
+                    upButton.classList.add('active');
+                }
+            } else {
+                if (postVotes.userVote === 'down') {
+                    // Unvote
+                    postVotes.down--;
+                    postVotes.userVote = null;
+                    downButton.classList.remove('active');
+                } else {
+                    // New downvote
+                    if (postVotes.userVote === 'up') {
+                        postVotes.up--;
+                        upButton.classList.remove('active');
+                    }
+                    postVotes.down++;
+                    postVotes.userVote = 'down';
+                    downButton.classList.add('active');
+                }
+            }
+
+            // Save to localStorage
+            localStorage.setItem('blogVotes', JSON.stringify(votes));
+
+            // Update display
+            updateVoteDisplay(postId);
+        }
+
+        function updateVoteDisplay(postId) {
+            const votes = JSON.parse(localStorage.getItem('blogVotes') || '{}');
+            const postVotes = votes[postId] || { up: 0, down: 0, userVote: null };
+
+            // Update counts
+            document.getElementById(`upvote-${postId}`).textContent = postVotes.up;
+            document.getElementById(`downvote-${postId}`).textContent = postVotes.down;
+
+            // Update active states
+            const upButton = document.querySelector('.vote-button.upvote');
+            const downButton = document.querySelector('.vote-button.downvote');
+
+            if (postVotes.userVote === 'up') {
+                upButton.classList.add('active');
+            }
+            if (postVotes.userVote === 'down') {
+                downButton.classList.add('active');
+            }
         }
 
         // Load post when page loads

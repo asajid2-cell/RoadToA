@@ -1,6 +1,23 @@
 {
   "posts": [
     {
+      "id": "procrastination",
+      "title": "Breaking the Cycle of Procrastination",
+      "author": "Sharaf Yasir",
+      "date": "January 15, 2026",
+      "readTime": "4 min read",
+      "category": "Study Tips",
+      "excerpt": "Procrastination is something everyone faces at least once during their studies, but it can be one of the biggest obstacles to academic success. Learn three strategies to kick off this new year by thinking less and doing more.",
+      "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "content": [
+        "Procrastination is something everyone faces at least once during their studies, but it can be one of the biggest obstacles to academic success. Distractions, avoidance, and fear of failure can often take over the moment it's time to study. At Road to A, we believe that beating procrastination is less about forcing motivation and more about creating systems of habits that make starting easier. Here are three strategies you can use to kick off this new year by thinking less and doing more:",
+        "**Shrink the task:** When you stare at big goals like \"study for the chemistry midterm\", it may seem daunting and unclear in its process. Instead, you can break them down into small, actionable steps: \"review two pages today, and two tomorrow,\" \"do five practice pages,\" \"summarize one chapter,\" etc. Small tasks reduce mental resistance and make it easier to begin.",
+        "**Use timers:** Tell yourself you only have to work for 20–30 minutes. Set a timer and focus until the timer ends. Tell yourself you will not allow yourself to be distracted before the timer runs out, because your immediate reward for your perseverance will be a break (that is taken in moderation).",
+        "**Manage your environment:** Relying on willpower alone isn't sustainable. Study in a place conducive to focus, like a library, a desk, or a quiet corner. Keep your phone out of reach, close all extra tabs, and make sure your workspace has only the essentials you need to get the work done.",
+        "Remember that procrastination is not a part of who you are. Procrastination is nothing more than a stress response. Every time you choose to start, no matter how imperfectly, you weaken this stress response and strengthen healthy study habits."
+      ]
+    },
+    {
       "id": "tests",
       "title": "Tests: Navigating the Stress of Evaluation",
       "author": "Sydney Peskett",

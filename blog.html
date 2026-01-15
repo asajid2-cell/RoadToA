@@ -7,12 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="theme-loader.js"></script>
 
     <style>
         :root {
             --bg-cream: #FDF8F0;
-            --sage-green: #8FAA8B;
-            --terracotta: #C06C4F;
+            --sage-green: #7BA58C;
+            --terracotta: #D97555;
+            --ocean-blue: #5B9BB5;
+            --light-blue: #A8D5E2;
             --text-dark: #2C1E1A;
             --text-light: #5A4A46;
             --white: #FFFFFF;
@@ -21,6 +24,14 @@
             --motivation: #D4A574;
             --wellness: #9BBFB0;
             --announcements: #757575;
+
+            /* Solarpunk colors */
+            --sunrise-orange: #FFB084;
+            --warm-yellow: #FFD89B;
+            --soft-peach: #FFE5CC;
+            --moss-green: #8BA888;
+            --sky-blue: #A8D8EA;
+            --leaf-green: #A4C3A2;
         }
 
         * {
@@ -31,9 +42,10 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-cream);
+            background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D6 100%);
             color: var(--text-dark);
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
         /* --- Navigation --- */
@@ -44,7 +56,8 @@
             padding: 2rem 5%;
             position: relative;
             z-index: 10;
-            background-color: var(--bg-cream);
+            background: rgba(253, 248, 240, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
@@ -66,7 +79,7 @@
             color: var(--text-light);
             font-size: 0.95rem;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover,
@@ -92,19 +105,20 @@
         }
 
         .btn-primary {
-            background-color: var(--terracotta);
+            background: linear-gradient(135deg, var(--terracotta) 0%, #E88A6D 100%);
             color: var(--white);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(217, 117, 85, 0.2);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(192, 108, 79, 0.3);
+            box-shadow: 0 6px 20px rgba(217, 117, 85, 0.3);
         }
 
         /* --- Mobile Menu Toggle --- */
@@ -141,227 +155,237 @@
 
         /* --- Blog Hero --- */
         .blog-hero {
-            background-color: var(--sage-green);
-            padding: 5rem 5% 8rem;
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--ocean-blue) 100%);
+            padding: 5rem 5% 4rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.3)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.5;
+            pointer-events: none;
         }
 
         .blog-hero h1 {
             font-family: 'Merriweather', serif;
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--white);
             margin-bottom: 1rem;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .blog-hero p {
-            font-size: 1.2rem;
-            color: var(--bg-cream);
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            line-height: 1.6;
         }
 
         /* --- Search & Filter Bar --- */
         .filter-bar {
-            background-color: var(--white);
-            padding: 2rem 5%;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-            position: relative;
-            margin-top: -3rem;
-            z-index: 10;
-            border-radius: 15px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 245, 235, 0.9) 100%);
+            padding: 2.5rem 5%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
+            backdrop-filter: blur(10px);
         }
 
         .categories {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .category-pill {
-            padding: 0.6rem 1.5rem;
-            border-radius: 50px;
-            border: 2px solid var(--text-light);
-            background-color: transparent;
-            color: var(--text-light);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .category-pill:hover,
-        .category-pill.active {
-            background-color: var(--sage-green);
-            border-color: var(--sage-green);
-            color: var(--white);
-        }
-
-        /* --- Featured Post --- */
-        .featured-section {
-            padding: 5rem 5%;
-            background-color: var(--bg-cream);
-        }
-
-        .featured-post {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: var(--white);
-            border-radius: 20px;
-            box-shadow: 0 6px 30px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-
-        .featured-image {
-            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .featured-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .featured-content {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .category-tag {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .category-tag.study-tips { background-color: var(--study-tips); color: white; }
-        .category-tag.mental-health { background-color: var(--mental-health); color: white; }
-        .category-tag.motivation { background-color: var(--motivation); color: white; }
-        .category-tag.wellness { background-color: var(--wellness); color: white; }
-        .category-tag.announcements { background-color: var(--announcements); color: white; }
-
-        .featured-content h2 {
-            font-family: 'Merriweather', serif;
-            font-size: 2rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #FFF 0%, #FFF5EB 100%);
             color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .featured-content .excerpt {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .post-meta {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .read-more {
-            display: inline-block;
-            background-color: var(--terracotta);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 600;
-            transition: transform 0.2s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        .read-more:hover {
+        .category-pill:hover {
+            background: linear-gradient(135deg, var(--sage-green) 0%, var(--ocean-blue) 100%);
+            color: var(--white);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(123, 165, 140, 0.3);
         }
 
-        /* --- Article Grid --- */
-        .articles-section {
+        .category-pill.active {
+            background: linear-gradient(135deg, var(--terracotta) 0%, var(--sage-green) 100%);
+            color: var(--white);
+            border-color: var(--terracotta);
+            box-shadow: 0 4px 15px rgba(217, 117, 85, 0.3);
+        }
+
+        /* --- Blog Container --- */
+        .blog-container {
+            max-width: 1400px;
+            margin: 0 auto;
             padding: 3rem 5% 6rem;
-            background-color: var(--bg-cream);
         }
 
+        /* --- Articles Grid --- */
         .articles-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .article-card {
-            background-color: var(--white);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF7 100%);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 235, 220, 0.8);
         }
 
         .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(217, 117, 85, 0.2);
+            border-color: var(--sunrise-orange);
         }
 
         .article-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--sage-green), var(--terracotta));
-            position: relative;
+            height: 240px;
             overflow: hidden;
+            position: relative;
+        }
+
+        .article-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+            pointer-events: none;
         }
 
         .article-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
+            transition: transform 0.5s ease;
         }
 
         .article-card:hover .article-image img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .article-content {
             padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            width: fit-content;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .category-tag.study-tips {
+            background: linear-gradient(135deg, var(--terracotta) 0%, #E88A6D 100%);
+            color: white;
+        }
+        .category-tag.mental-health {
+            background: linear-gradient(135deg, var(--sage-green) 0%, #8FAA8B 100%);
+            color: white;
+        }
+        .category-tag.motivation {
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--light-blue) 100%);
+            color: white;
+        }
+        .category-tag.wellness {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--sage-green) 100%);
+            color: white;
+        }
+        .category-tag.announcements {
+            background: linear-gradient(135deg, #9E9E9E 0%, #757575 100%);
+            color: white;
         }
 
         .article-content h3 {
             font-family: 'Merriweather', serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--text-dark);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            font-weight: 600;
         }
 
         .article-content .excerpt {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
             color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            padding-top: 1.25rem;
+            border-top: 2px solid rgba(255, 235, 220, 0.6);
+            font-weight: 500;
+        }
+
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: var(--terracotta);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 5rem 2rem;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFFBF7 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
 
         /* --- Footer --- */
@@ -453,7 +477,7 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: var(--bg-cream);
+                background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D6 100%);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -506,125 +530,56 @@
 
             /* Blog Hero */
             .blog-hero {
-                padding: 3rem 4% 5rem;
+                padding: 3rem 4% 2.5rem;
             }
 
             .blog-hero h1 {
                 font-size: 2rem;
                 margin-bottom: 0.75rem;
-                line-height: 1.3;
             }
 
             .blog-hero p {
-                font-size: 0.95rem;
-                line-height: 1.7;
-                padding: 0 1rem;
+                font-size: 1rem;
             }
 
             /* Filter Bar */
             .filter-bar {
-                padding: 1.5rem 4%;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                margin-top: -2rem;
+                padding: 2rem 4%;
             }
 
             .categories {
-                width: 100%;
-                justify-content: center;
+                gap: 0.75rem;
             }
 
             .category-pill {
                 font-size: 0.85rem;
-                padding: 0.5rem 1rem;
-            }
-
-            .filter-bar h3 {
-                font-size: 0.9rem;
-            }
-
-            .category-filters {
-                flex-wrap: wrap;
-                gap: 0.5rem;
-            }
-
-            .category-btn {
-                padding: 0.5rem 0.875rem;
-                font-size: 0.8rem;
-            }
-
-            /* Featured Post */
-            .featured-section {
-                padding: 2rem 4%;
-            }
-
-            .featured-post {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 1.5rem;
-            }
-
-            .featured-image {
-                height: 200px;
-            }
-
-            .category-tag {
-                font-size: 0.7rem;
-                padding: 0.35rem 0.75rem;
-            }
-
-            .featured-content h2 {
-                font-size: 1.5rem;
-                margin-bottom: 0.75rem;
-            }
-
-            .excerpt {
-                font-size: 0.9rem;
-                line-height: 1.6;
-                margin-bottom: 1rem;
-            }
-
-            .post-meta {
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
-            }
-
-            .read-more {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
+                padding: 0.65rem 1.25rem;
             }
 
             /* Articles Grid */
-            .articles-section {
-                padding: 2rem 4% 3rem;
+            .blog-container {
+                padding: 2rem 4% 4rem;
             }
 
             .articles-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .article-card {
-                padding: 1.25rem;
+                gap: 2rem;
             }
 
             .article-image {
-                height: 180px;
+                height: 220px;
+            }
+
+            .article-content {
+                padding: 1.75rem;
             }
 
             .article-content h3 {
-                font-size: 1.15rem;
-                margin-bottom: 0.5rem;
+                font-size: 1.3rem;
             }
 
             .article-content .excerpt {
-                font-size: 0.85rem;
-                margin-bottom: 0.75rem;
-            }
-
-            .article-content .post-meta {
-                font-size: 0.75rem;
+                font-size: 0.95rem;
             }
 
             /* Footer */
@@ -678,7 +633,7 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: var(--bg-cream);
+                background: linear-gradient(135deg, #FFF9F0 0%, #FFE8D6 100%);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -731,79 +686,29 @@
 
             /* Blog Hero */
             .blog-hero {
-                padding: 3.5rem 4% 6rem;
+                padding: 4rem 4% 3rem;
             }
 
             .blog-hero h1 {
                 font-size: 2.5rem;
-                margin-bottom: 1rem;
-                line-height: 1.3;
             }
 
             .blog-hero p {
-                font-size: 1.05rem;
-                line-height: 1.7;
-                max-width: 600px;
-                margin: 0 auto;
+                font-size: 1.1rem;
             }
 
             /* Filter Bar */
             .filter-bar {
-                padding: 1.75rem 4%;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 1.25rem;
-                margin-top: -2.5rem;
+                padding: 2rem 4%;
             }
 
             .categories {
-                justify-content: center;
-            }
-
-            .filter-bar h3 {
-                font-size: 0.95rem;
-            }
-
-            .category-filters {
-                gap: 0.625rem;
-            }
-
-            .category-btn {
-                padding: 0.55rem 1rem;
-                font-size: 0.85rem;
-            }
-
-            /* Featured Post */
-            .featured-section {
-                padding: 2.5rem 4%;
-            }
-
-            .featured-post {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 2rem;
-            }
-
-            .featured-image {
-                height: 250px;
-            }
-
-            .featured-content h2 {
-                font-size: 1.85rem;
-            }
-
-            .excerpt {
-                font-size: 0.95rem;
-            }
-
-            .post-meta {
-                font-size: 0.85rem;
+                gap: 0.85rem;
             }
 
             /* Articles Grid */
-            .articles-section {
-                padding: 2.5rem 4% 3.5rem;
+            .blog-container {
+                padding: 2.5rem 4% 5rem;
             }
 
             .articles-grid {
@@ -811,16 +716,8 @@
                 gap: 2rem;
             }
 
-            .article-card {
-                padding: 1.5rem;
-            }
-
             .article-image {
-                height: 200px;
-            }
-
-            .article-content h3 {
-                font-size: 1.25rem;
+                height: 220px;
             }
 
             /* Footer */
@@ -858,51 +755,10 @@
                 font-size: 0.9rem;
             }
 
-            /* Blog Hero */
-            .blog-hero {
-                padding: 3rem 5% 3.5rem;
-            }
-
-            .blog-hero h1 {
-                font-size: 2.8rem;
-            }
-
-            .blog-hero p {
-                font-size: 1.05rem;
-            }
-
-            /* Filter Bar */
-            .filter-bar {
-                padding: 2rem 5%;
-            }
-
-            /* Featured Post */
-            .featured-section {
-                padding: 3rem 5%;
-            }
-
-            .featured-post {
-                grid-template-columns: 1fr 1fr;
-                gap: 2.5rem;
-                padding: 2.25rem;
-            }
-
-            .featured-image {
-                height: 280px;
-            }
-
-            .featured-content h2 {
-                font-size: 2rem;
-            }
-
             /* Articles Grid */
-            .articles-section {
-                padding: 3rem 5% 4rem;
-            }
-
             .articles-grid {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             /* Footer */
@@ -961,107 +817,39 @@
             <li><a href="team.html">Our Team</a></li>
             <li><a href="blog.html" class="active">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="website-settings.html">Settings</a></li>
             <div class="nav-actions mobile-actions">
-                <a href="#" class="btn-text">Log in</a>
                 <a href="get-involved.html" class="btn-primary">Get Involved</a>
             </div>
         </ul>
 
         <div class="nav-actions">
-            <a href="#" class="btn-text">Log in</a>
             <a href="get-involved.html" class="btn-primary">Get Involved</a>
         </div>
     </nav>
 
     <!-- Blog Hero -->
     <section class="blog-hero">
-        <h1>The Student Guide.</h1>
-        <p>Study tips, mental health advice, and honest stories from university mentors who have been in your shoes.</p>
+        <h1>The Student Guide</h1>
+        <p>Study tips, mental health advice, and honest stories from university mentors.</p>
     </section>
 
     <!-- Filter Bar -->
     <section class="filter-bar">
         <div class="categories">
-            <a href="#" class="category-pill active">All</a>
-            <a href="#" class="category-pill">Study Tips</a>
-            <a href="#" class="category-pill">Mental Health</a>
-            <a href="#" class="category-pill">Motivation</a>
-            <a href="#" class="category-pill">Wellness</a>
+            <button class="category-pill active" data-category="All">All</button>
+            <button class="category-pill" data-category="Study Tips">Study Tips</button>
+            <button class="category-pill" data-category="Mental Health">Mental Health</button>
+            <button class="category-pill" data-category="Motivation">Motivation</button>
+            <button class="category-pill" data-category="Wellness">Wellness</button>
+            <button class="category-pill" data-category="Announcements">Announcements</button>
         </div>
     </section>
 
-    <!-- Featured Post -->
-    <section class="featured-section">
-        <article class="featured-post">
-            <div class="featured-image">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Student taking test">
-            </div>
-            <div class="featured-content">
-                <span class="category-tag study-tips">Study Tips</span>
-                <h2>Tests: Navigating the Stress of Evaluation</h2>
-                <p class="excerpt">Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.</p>
-                <p class="post-meta">Written by Sydney Peskett • May 19, 2021 • 3 min read</p>
-                <a href="blog-post.html?id=tests" class="read-more">Read Full Article</a>
-            </div>
-        </article>
-    </section>
-
-    <!-- Articles Grid -->
-    <section class="articles-section">
-        <div class="articles-grid">
-
-            <!-- Article 1: Mental Health -->
-            <a href="blog-post.html?id=mental-health" class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Nature scene">
-                </div>
-                <div class="article-content">
-                    <span class="category-tag mental-health">Mental Health</span>
-                    <h3>5 Tips to Keep Your Mental Health High!</h3>
-                    <p class="excerpt">With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year...</p>
-                    <p class="post-meta">Shahab Marzoughi • May 2, 2021</p>
-                </div>
-            </a>
-
-            <!-- Article 2: Wellness -->
-            <a href="blog-post.html?id=wellness" class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Morning checklist">
-                </div>
-                <div class="article-content">
-                    <span class="category-tag wellness">Wellness</span>
-                    <h3>Good Mental Habits for Uncertain Times</h3>
-                    <p class="excerpt">The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue...</p>
-                    <p class="post-meta">Ayaad Sharif-Abdullah • Apr 19, 2021</p>
-                </div>
-            </a>
-
-            <!-- Article 3: Motivation -->
-            <a href="blog-post.html?id=motivation" class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Running track">
-                </div>
-                <div class="article-content">
-                    <span class="category-tag motivation">Motivation</span>
-                    <h3>"Many will start fast, few will finish strong."</h3>
-                    <p class="excerpt">At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax...</p>
-                    <p class="post-meta">Ahmad Refaat • Apr 13, 2021</p>
-                </div>
-            </a>
-
-            <!-- Article 4: Welcome -->
-            <a href="blog-post.html?id=welcome" class="article-card">
-                <div class="article-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team collaboration">
-                </div>
-                <div class="article-content">
-                    <span class="category-tag announcements">Announcements</span>
-                    <h3>Welcome to the Blog!</h3>
-                    <p class="excerpt">This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals...</p>
-                    <p class="post-meta">Road to A Team • Apr 1, 2021</p>
-                </div>
-            </a>
-
+    <!-- Blog Container -->
+    <section class="blog-container">
+        <div class="articles-grid" id="articlesGrid">
+            <div class="loading">Loading posts...</div>
         </div>
     </section>
 
@@ -1129,6 +917,164 @@
                 navLinks.classList.remove('active');
                 document.body.style.overflow = '';
             }
+        });
+
+        // Blog posts data (inline for static site compatibility)
+        const allPostsData = [
+            {
+                "id": "procrastination",
+                "title": "Breaking the Cycle of Procrastination",
+                "author": "Sharaf Yasir",
+                "date": "January 15, 2026",
+                "readTime": "4 min read",
+                "category": "Study Tips",
+                "excerpt": "Procrastination is something everyone faces at least once during their studies, but it can be one of the biggest obstacles to academic success. Learn three strategies to kick off this new year by thinking less and doing more.",
+                "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "id": "tests",
+                "title": "Tests: Navigating the Stress of Evaluation",
+                "author": "Sydney Peskett",
+                "date": "May 19, 2021",
+                "readTime": "3 min read",
+                "category": "Study Tips",
+                "excerpt": "Tests are an unavoidable part of a student's career, and yet they can be one of the most stressful aspects of learning. Even if a student prepares diligently, anxiety can strike the moment the paper hits the desk.",
+                "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+            },
+            {
+                "id": "mental-health",
+                "title": "5 Tips to Keep Your Mental Health High!",
+                "author": "Shahab Marzoughi",
+                "date": "May 2, 2021",
+                "readTime": "4 min read",
+                "category": "Mental Health",
+                "excerpt": "With Canada's Mental Health Week starting soon, it's important for students to take charge of their own mental health going into the final stretch of the school year...",
+                "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                "id": "wellness",
+                "title": "Good Mental Habits for Uncertain Times",
+                "author": "Ayaad Sharif-Abdullah",
+                "date": "Apr 19, 2021",
+                "readTime": "3 min read",
+                "category": "Wellness",
+                "excerpt": "The COVID pandemic has created challenging issues throughout the world and many of us are feeling emotions of loneliness and fatigue...",
+                "image": "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                "id": "motivation",
+                "title": "\"Many will start fast, few will finish strong.\"",
+                "author": "Ahmad Refaat",
+                "date": "Apr 13, 2021",
+                "readTime": "3 min read",
+                "category": "Motivation",
+                "excerpt": "At this time of year, most students can't wait for the next couple of months to be over, with the goal of finishing everything they can so they can finally relax...",
+                "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                "id": "welcome",
+                "title": "Welcome to the Blog!",
+                "author": "Road to A Team",
+                "date": "Apr 1, 2021",
+                "readTime": "2 min read",
+                "category": "Announcements",
+                "excerpt": "This blog was started to help our team accompany you to your success, not only in your grades, but also to encourage you to improve and grow as individuals...",
+                "image": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let allPosts = [];
+        let currentFilter = 'All';
+
+        // Load blog posts (using inline data for static site)
+        function loadBlogPosts() {
+            console.log('Loading blog posts from inline data...');
+            allPosts = allPostsData;
+            console.log('Successfully loaded posts:', allPosts.length);
+            renderArticles();
+        }
+
+        // Render all articles
+        function renderArticles() {
+            const gridContainer = document.getElementById('articlesGrid');
+
+            console.log('renderArticles called. currentFilter:', currentFilter);
+            console.log('allPosts:', allPosts);
+
+            // Filter posts based on current category
+            const filteredPosts = currentFilter === 'All'
+                ? allPosts
+                : allPosts.filter(post => {
+                    console.log(`Checking post: ${post.title}, category: ${post.category}, matches: ${post.category === currentFilter}`);
+                    return post.category === currentFilter;
+                });
+
+            console.log('Filtered posts count:', filteredPosts.length);
+            console.log('Filtered posts:', filteredPosts);
+
+            // Check if no posts
+            if (!filteredPosts || filteredPosts.length === 0) {
+                console.warn('No posts to display for filter:', currentFilter);
+                gridContainer.innerHTML = '<div class="no-posts">No posts found in this category.</div>';
+                return;
+            }
+
+            // Render all posts as cards
+            try {
+                const cardsHTML = filteredPosts.map(post => {
+                    const categoryClass = post.category.toLowerCase().replace(/\s+/g, '-');
+                    return `
+                        <a href="blog-post.html?id=${post.id}" class="article-card">
+                            <div class="article-image">
+                                <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                            </div>
+                            <div class="article-content">
+                                <span class="category-tag ${categoryClass}">${post.category}</span>
+                                <h3>${post.title}</h3>
+                                <p class="excerpt">${post.excerpt}</p>
+                                <div class="post-meta">${post.author} • ${post.date} • ${post.readTime}</div>
+                            </div>
+                        </a>
+                    `;
+                }).join('');
+
+                console.log('Generated HTML length:', cardsHTML.length);
+                gridContainer.innerHTML = cardsHTML;
+                console.log('Successfully rendered articles');
+            } catch (renderError) {
+                console.error('Error rendering articles:', renderError);
+                gridContainer.innerHTML = '<div class="no-posts">Error rendering posts. Please check console.</div>';
+            }
+        }
+
+        // Category filter functionality
+        function setupCategoryFilters() {
+            const categoryPills = document.querySelectorAll('.category-pill');
+            console.log('Setting up category filters. Found pills:', categoryPills.length);
+
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    console.log('Category pill clicked:', this.getAttribute('data-category'));
+
+                    // Update active state
+                    categoryPills.forEach(p => p.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Get filter category
+                    currentFilter = this.getAttribute('data-category');
+                    console.log('Filter changed to:', currentFilter);
+
+                    // Re-render articles
+                    renderArticles();
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM Content Loaded - initializing blog');
+            loadBlogPosts();
+            setupCategoryFilters();
         });
     </script>
 

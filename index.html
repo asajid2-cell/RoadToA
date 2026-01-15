@@ -7,13 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+    <script src="theme-loader.js"></script>
+
     <style>
         :root {
-            /* Palette extracted from your design mockup */
+            /* Updated Color Palette with Blue Accents */
             --bg-cream: #FDF8F0;
-            --sage-green: #8FAA8B;
-            --terracotta: #C06C4F;
+            --sage-green: #7BA58C;
+            --terracotta: #D97555;
+            --ocean-blue: #5B9BB5;
+            --light-blue: #A8D5E2;
             --text-dark: #2C1E1A;
             --text-light: #5A4A46;
             --white: #FFFFFF;
@@ -404,19 +407,19 @@
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--sage-green);
+            color: var(--ocean-blue);
             padding: 0.75rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            border: 2px solid var(--sage-green);
+            border: 2px solid var(--ocean-blue);
             transition: all 0.2s;
             cursor: pointer;
         }
 
         .btn-secondary:hover {
-            background-color: var(--sage-green);
+            background-color: var(--ocean-blue);
             color: var(--white);
             transform: translateY(-2px);
         }
@@ -1120,14 +1123,13 @@
             <li><a href="team.html">Our Team</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="website-settings.html">Settings</a></li>
             <div class="nav-actions mobile-actions">
-                <a href="#" class="btn-text">Log in</a>
                 <a href="get-involved.html" class="btn-primary">Get Involved</a>
             </div>
         </ul>
 
         <div class="nav-actions">
-            <a href="#" class="btn-text">Log in</a>
             <a href="get-involved.html" class="btn-primary">Get Involved</a>
         </div>
     </nav>
@@ -1180,7 +1182,7 @@
 
             <div class="pillar-card">
                 <div class="pillar-icon">❤️</div>
-                <h3>100% Free, Always</h3>
+                <h3>100% Free</h3>
                 <p>Education shouldn't come with a price tag. Our mission is to spread knowledge and teach it well. We are committed to providing high-quality aid until you reach your academic goals—completely free of charge.</p>
             </div>
 
