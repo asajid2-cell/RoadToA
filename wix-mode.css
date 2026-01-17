@@ -1,0 +1,250 @@
+/**
+ * Wix Mode Styles
+ * Visual editor styling for edit mode
+ */
+
+/* Toolbar */
+#wix-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #2C1E1A 0%, #3D2D27 100%);
+    color: white;
+    z-index: 999999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 0.75rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.wix-toolbar-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.wix-toolbar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #FFD89B;
+    text-align: center;
+}
+
+.wix-toolbar-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.wix-btn {
+    background: #8FAA8B;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wix-btn span {
+    font-size: 1.1rem;
+}
+
+.wix-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.wix-btn-danger {
+    background: #D97555;
+}
+
+.wix-btn-success {
+    background: #7BA58C;
+}
+
+.wix-btn-warning {
+    background: #FFB084;
+    color: #2C1E1A;
+}
+
+.wix-btn-secondary {
+    background: #5B9BB5;
+}
+
+.wix-toolbar-help {
+    font-size: 0.8rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+}
+
+/* Editable elements */
+.wix-editable {
+    transition: all 0.2s;
+    outline: 2px dashed transparent;
+}
+
+.wix-editable:hover {
+    outline-color: rgba(192, 108, 79, 0.5);
+    outline-offset: 2px;
+}
+
+.wix-selected {
+    outline: 3px solid #C06C4F !important;
+    outline-offset: 3px;
+    position: relative;
+}
+
+.wix-selected::before {
+    content: '✓ Selected';
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: #C06C4F;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 10000;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Custom added elements */
+.wix-element {
+    transition: all 0.2s;
+}
+
+.wix-text-element {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #2C1E1A;
+}
+
+.wix-text-element:focus {
+    outline: 2px solid #8FAA8B;
+    outline-offset: 2px;
+}
+
+.wix-shape-element {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.wix-image-element {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Content editable styling */
+[contenteditable="true"] {
+    outline: 2px solid #8FAA8B;
+    outline-offset: 2px;
+    cursor: text !important;
+}
+
+[contenteditable="true"]:focus {
+    outline-color: #C06C4F;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Adjust body padding when toolbar is active */
+body:has(#wix-toolbar) {
+    padding-top: 120px;
+}
+
+/* Dragging state */
+.wix-dragging {
+    opacity: 0.7;
+    cursor: grabbing !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    #wix-toolbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .wix-toolbar-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .wix-toolbar-buttons {
+        gap: 0.35rem;
+    }
+
+    .wix-btn {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .wix-btn span {
+        font-size: 0.9rem;
+    }
+
+    .wix-toolbar-help {
+        font-size: 0.7rem;
+    }
+
+    body:has(#wix-toolbar) {
+        padding-top: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wix-toolbar-buttons {
+        flex-direction: column;
+    }
+
+    .wix-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    body:has(#wix-toolbar) {
+        padding-top: 180px;
+    }
+}
+
+/* Animation for added elements */
+@keyframes wixElementAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.wix-element {
+    animation: wixElementAppear 0.3s ease-out;
+}
+
+/* Selection handles (future enhancement) */
+.wix-selected::after {
+    content: '⊞';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    background: #C06C4F;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    cursor: nwse-resize;
+    z-index: 10001;
+}

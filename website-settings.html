@@ -95,6 +95,12 @@
             cursor: pointer;
         }
 
+        .btn-primary-large {
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(192, 108, 79, 0.3);
@@ -385,6 +391,101 @@
             box-shadow: 0 4px 12px rgba(123, 165, 140, 0.4);
         }
 
+        /* Wix Mode Section */
+        .wix-mode-section {
+            background: linear-gradient(135deg, #8FAA8B 0%, #7BA58C 100%);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.15);
+            margin-top: 3rem;
+            color: var(--white);
+        }
+
+        .wix-mode-section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .wix-mode-card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .wix-mode-info h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .wix-mode-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .wix-mode-info li {
+            padding: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .wix-mode-toggle-container {
+            display: flex;
+            align-items: center;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+        }
+
+        /* Toggle Switch */
+        .wix-mode-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .wix-mode-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .wix-mode-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .wix-mode-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        .wix-mode-switch input:checked + .wix-mode-slider {
+            background-color: #C06C4F;
+        }
+
+        .wix-mode-switch input:checked + .wix-mode-slider:before {
+            transform: translateX(26px);
+        }
+
         .preset-section {
             background: var(--white);
             padding: 2.5rem;
@@ -535,18 +636,18 @@
 
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="request-tutor.html">Request a Tutor</a></li>
             <li><a href="team.html">Our Team</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="website-settings.html" class="active">Settings</a></li>
             <div class="nav-actions mobile-actions">
-                <a href="get-involved.html" class="btn-primary">Get Involved</a>
+                <a href="request-tutor.html" class="btn-primary btn-primary-large">Request a Tutor</a>
             </div>
         </ul>
 
         <div class="nav-actions">
-            <a href="get-involved.html" class="btn-primary">Get Involved</a>
+            <a href="request-tutor.html" class="btn-primary btn-primary-large">Request a Tutor</a>
         </div>
     </nav>
 
@@ -694,6 +795,36 @@
             </div>
         </div>
 
+        <!-- Wix Mode Section -->
+        <div class="wix-mode-section">
+            <h2>✏️ Wix Edit Mode</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-light);">Enable visual editing mode to directly edit, move, add, and delete elements on your website pages. All changes are saved locally and persist across sessions.</p>
+
+            <div class="wix-mode-card">
+                <div class="wix-mode-info">
+                    <h3>🎨 Visual Page Editor</h3>
+                    <ul style="margin: 1rem 0; line-height: 1.8; color: var(--text-light);">
+                        <li>✓ Click elements to select them</li>
+                        <li>✓ Drag elements to reposition them</li>
+                        <li>✓ Double-click text to edit inline</li>
+                        <li>✓ Add new text boxes, shapes, and images</li>
+                        <li>✓ Delete elements with the Delete key</li>
+                        <li>✓ All changes save automatically</li>
+                    </ul>
+                    <div class="wix-mode-toggle-container">
+                        <label class="wix-mode-switch">
+                            <input type="checkbox" id="wix-mode-toggle" onchange="toggleWixMode()">
+                            <span class="wix-mode-slider"></span>
+                        </label>
+                        <span id="wix-mode-status" style="font-weight: 600; margin-left: 1rem;">Wix Mode: OFF</span>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light); font-style: italic;">
+                        💡 Tip: Enable Wix Mode, then navigate to any page to start editing visually!
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <div class="action-buttons">
             <button class="btn-reset" onclick="resetToDefaults()">Reset to Defaults</button>
             <button class="btn-auto-contrast" onclick="autoContrast()">✨ Auto Contrast</button>
@@ -767,7 +898,6 @@
 
             <div class="footer-column">
                 <h4>Contact</h4>
-                <p>Email: info@roadtoa.com</p>
                 <p>Email: RoadtoATutorg@gmail.com</p>
                 <p>Based in Edmonton, Canada</p>
             </div>
@@ -1118,6 +1248,45 @@
             alert(`Auto Contrast Applied! ✨\n\nPrimary Text: ${primaryRatio}:1 (WCAG AAA)\nSecondary Text: ${secondaryRatio}:1 (WCAG AA)\n\nYour text colors are now optimized for maximum readability!`);
         }
 
+        // Wix Mode Toggle
+        function toggleWixMode() {
+            const toggle = document.getElementById('wix-mode-toggle');
+            const status = document.getElementById('wix-mode-status');
+            const isEnabled = toggle.checked;
+
+            // Save state to localStorage
+            localStorage.setItem('wix-mode-enabled', isEnabled ? 'true' : 'false');
+
+            // Update status text
+            if (isEnabled) {
+                status.textContent = 'Wix Mode: ON ✅';
+                status.style.color = '#FFD89B';
+                alert('✅ Wix Mode Enabled!\n\nNavigate to any page to start editing visually.\n\nFeatures:\n• Click elements to select\n• Drag to move\n• Double-click text to edit\n• Use toolbar to add elements\n• Delete key to remove elements\n• All changes save automatically');
+            } else {
+                status.textContent = 'Wix Mode: OFF';
+                status.style.color = 'white';
+                alert('Wix Mode Disabled. Visual editing is now turned off.');
+            }
+        }
+
+        // Check Wix mode status on load
+        function checkWixModeStatus() {
+            const toggle = document.getElementById('wix-mode-toggle');
+            const status = document.getElementById('wix-mode-status');
+            const isEnabled = localStorage.getItem('wix-mode-enabled') === 'true';
+
+            if (toggle) {
+                toggle.checked = isEnabled;
+                if (isEnabled) {
+                    status.textContent = 'Wix Mode: ON ✅';
+                    status.style.color = '#FFD89B';
+                } else {
+                    status.textContent = 'Wix Mode: OFF';
+                    status.style.color = 'white';
+                }
+            }
+        }
+
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navLinks = document.getElementById('navLinks');
@@ -1133,6 +1302,7 @@
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             initializeColorPickers();
+            checkWixModeStatus();
         });
     </script>
 

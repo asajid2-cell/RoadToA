@@ -9,6 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="theme-loader.js"></script>
 
+    <!-- Wix Mode -->
+    <link rel="stylesheet" href="wix-mode.css">
+    <script src="wix-mode.js"></script>
+
     <style>
         :root {
             /* Palette extracted from your design mockup */
@@ -100,6 +104,12 @@
             transition: transform 0.2s, box-shadow 0.2s;
             border: none;
             cursor: pointer;
+        }
+
+        .btn-primary-large {
+            padding: 1rem 2rem;
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
         .btn-primary:hover {
@@ -224,6 +234,13 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            object-position: center center;
+        }
+
+        /* Adjust positioning for specific team members whose faces are cut off */
+        .team-card:nth-child(4) .team-photo img,  /* Fathi */
+        .team-card:nth-child(5) .team-photo img {  /* Ahmed */
+            object-position: center top;
         }
 
         .team-card h3 {
@@ -867,18 +884,18 @@
 
         <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Home</a></li>
-            <li><a href="request-tutor.html">Request a Tutor</a></li>
             <li><a href="team.html" class="active">Our Team</a></li>
             <li><a href="blog.html">Blog</a></li>
+            <li><a href="get-involved.html">Get Involved</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="website-settings.html">Settings</a></li>
             <div class="nav-actions mobile-actions">
-                <a href="get-involved.html" class="btn-primary">Get Involved</a>
+                <a href="request-tutor.html" class="btn-primary btn-primary-large">Request a Tutor</a>
             </div>
         </ul>
 
         <div class="nav-actions">
-            <a href="get-involved.html" class="btn-primary">Get Involved</a>
+            <a href="request-tutor.html" class="btn-primary btn-primary-large">Request a Tutor</a>
         </div>
     </nav>
 
@@ -899,7 +916,7 @@
                 </div>
                 <h3>Ahmad Refaat</h3>
                 <div class="team-role">President & Founder</div>
-                <p class="team-bio">Founder of Road to A and a first-year Immunology student at the University of Alberta. Ahmad is driven by a lifelong passion for acquiring knowledge and educating others whenever possible.</p>
+                <p class="team-bio">I am a 1st year research-based MSc in Immunology student at the University of Alberta. I have a lifelong passion for learning and communicating knowledge in clear, accessible ways. Outside of my research, I enjoy engaging with students through mentorship and academic support. I hope to contribute to a community where curiosity, resilience, and strong science communication help students thrive.</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/ahmad-refaat-aa0136241/" target="_blank" class="social-icon" title="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -912,21 +929,28 @@
             <!-- Sepehr Behroozi -->
             <div class="team-card">
                 <div class="team-photo">
-                    <img src="sep photo.avif" alt="Sepehr Behroozi">
+                    <img src="sep.png" alt="Sepehr Behroozi">
                 </div>
                 <h3>Sepehr Behroozi</h3>
                 <div class="team-role">Vice President</div>
-                <p class="team-bio">A first-year Kinesiology student at the University of Alberta with aspirations for medical school. Sepehr balances his academic focus with a love for volleyball and helping students succeed.</p>
+                <p class="team-bio">I'm Sepehr Behroozi Esfahani, a Computing Science graduate from the University of Alberta with a strong passion for teaching science. I aim to help students develop a deep understanding of concepts through clear explanations and supportive guidance.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/sepehrbehroozi/" target="_blank" class="social-icon" title="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <!-- Ayaad Sharif -->
             <div class="team-card">
                 <div class="team-photo">
-                    <img src="ayaad photo.avif" alt="Ayaad Sharif">
+                    <img src="ayaad photo.png" alt="Ayaad Sharif">
                 </div>
                 <h3>Ayaad Sharif</h3>
                 <div class="team-role">Vice President</div>
-                <p class="team-bio">Currently a Grade 12 student at Paul Kane High School. Ayaad is deeply passionate about the sciences and values spending quality time with family and friends while helping peers grow.</p>
+                <p class="team-bio">Hello! My name is Ayaad, and I am a computing science student at the University of Alberta. Some of my hobbies include working on open-source software, game development, and my homelab. My goal here at Road to A is to help students overcome their academic struggles in a friendly and supportive environment. As someone who has struggled academically, I am committed to help students overcome the same challenges I once faced.</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/ayaad/" target="_blank" class="social-icon" title="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -939,11 +963,11 @@
             <!-- Fathi Abu-Sharkh -->
             <div class="team-card">
                 <div class="team-photo">
-                    <img src="fathi photo.avif" alt="Fathi Abu-Sharkh">
+                    <img src="fathi.png" alt="Fathi Abu-Sharkh">
                 </div>
                 <h3>Fathi Abu-Sharkh</h3>
-                <div class="team-role">President of Social Media</div>
-                <p class="team-bio">A first-year Economics major at the University of Alberta. Fathi enjoys math, soccer, and volunteering. He leads our outreach to connect with as many students as possible.</p>
+                <div class="team-role">President of Marketing</div>
+                <p class="team-bio">Hey everyone, my name is Fathi and I am the President of Marketing at Road to A. I am currently in my fifth year of Accounting at the University of Alberta. I'm passionate about finance, leadership, and using social media as a tool to connect, inform, and support students. I enjoy volunteering my time to help others and staying active through soccer. I look forward to continuing to grow our social media presence, expand our reach, and support as many students as possible.</p>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/fathi-abu-sharkh-412a39230/" target="_blank" class="social-icon" title="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -956,7 +980,7 @@
             <!-- Ahmed Sajid -->
             <div class="team-card">
                 <div class="team-photo">
-                    <img src="sajid photo.webp" alt="Ahmed Sajid">
+                    <img src="ahmed.png.jpg" alt="Ahmed Sajid">
                 </div>
                 <h3>Ahmed Sajid</h3>
                 <div class="team-role">Lead Developer</div>
@@ -995,7 +1019,6 @@
 
             <div class="footer-column">
                 <h4>Contact</h4>
-                <p>Email: info@roadtoa.com</p>
                 <p>Email: RoadtoATutorg@gmail.com</p>
                 <p>Based in Edmonton, Canada</p>
             </div>
