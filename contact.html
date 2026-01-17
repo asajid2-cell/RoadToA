@@ -195,23 +195,83 @@
             margin-bottom: 2.5rem;
         }
 
-        /* --- Contact Form Button --- */
-        .btn-contact-form {
+        /* --- Contact Form --- */
+        .contact-form {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--bg-cream);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+            background-color: var(--bg-cream);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage-green);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
             background-color: var(--terracotta);
             color: var(--white);
             padding: 1.1rem 3rem;
             border-radius: 50px;
-            text-decoration: none;
+            border: none;
             font-weight: 600;
             font-size: 1.05rem;
-            display: inline-block;
+            cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            margin-bottom: 3rem;
+            width: 100%;
+            margin-bottom: 1.5rem;
         }
 
-        .btn-contact-form:hover {
+        .btn-submit:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(192, 108, 79, 0.4);
+        }
+
+        .email-alternative {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .email-alternative a {
+            color: var(--terracotta);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .email-alternative a:hover {
+            text-decoration: underline;
         }
 
         /* --- Divider --- */
@@ -780,11 +840,36 @@
             </p>
 
             <p class="instruction">
-                For general inquiries, tutoring requests, or business proposals, please fill out our intake form below. We aim to respond within 24-48 hours.
+                For general inquiries, tutoring requests, or business proposals, please fill out the form below. We aim to respond within 24-48 hours.
             </p>
 
-            <!-- TODO: Replace '#' with your Google Form link -->
-            <a href="#" target="_blank" class="btn-contact-form">Open Contact Form</a>
+            <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onsubmit="return handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+
+            <div class="email-alternative">
+                Or email us directly at <a href="mailto:RoadtoATutorg@gmail.com">RoadtoATutorg@gmail.com</a>
+            </div>
 
             <hr class="divider">
 
@@ -887,6 +972,28 @@
                 document.body.style.overflow = '';
             }
         });
+
+        // Handle contact form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const form = event.target;
+            const name = form.name.value;
+            const email = form.email.value;
+            const subject = form.subject.value;
+            const message = form.message.value;
+
+            // Create mailto link as fallback for static site
+            const mailtoLink = `mailto:RoadtoATutorg@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+            // Open user's email client
+            window.location.href = mailtoLink;
+
+            // Show confirmation
+            alert('Your email client will open. Please send the pre-filled email, or you can email us directly at RoadtoATutorg@gmail.com');
+
+            return false;
+        }
     </script>
 
 </body>

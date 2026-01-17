@@ -227,7 +227,7 @@
 
         .intake-card {
             background-color: var(--sage-green);
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 4rem 3.5rem;
             border-radius: 30px;
@@ -250,28 +250,77 @@
             margin-bottom: 2.5rem;
         }
 
-        .btn-intake {
-            background-color: var(--white);
-            color: var(--sage-green);
-            padding: 1.1rem 3rem;
-            border-radius: 50px;
-            text-decoration: none;
+        .grade-selection-text {
+            font-size: 1.15rem;
+            color: var(--white);
             font-weight: 600;
-            font-size: 1.05rem;
-            display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
             margin-bottom: 1.5rem;
         }
 
-        .btn-intake:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .grade-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-grade {
+            background-color: var(--white);
+            color: var(--sage-green);
+            padding: 1.25rem 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-grade:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            background-color: var(--terracotta);
+            color: var(--white);
+        }
+
+        .btn-grade span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.25rem;
+        }
+
+        .privacy-policy {
+            margin-top: 2.5rem;
+            padding: 1.75rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: var(--bg-cream);
+            text-align: left;
+        }
+
+        .privacy-policy p {
+            margin-bottom: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .privacy-policy p:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-policy strong {
+            color: var(--white);
         }
 
         .disclaimer {
-            font-size: 0.9rem;
-            color: rgba(253, 248, 240, 0.8);
+            font-size: 0.95rem;
+            color: rgba(253, 248, 240, 0.9);
             font-style: italic;
+            margin-top: 1.5rem;
         }
 
         /* --- CLOSED State (Waitlist) --- */
@@ -525,14 +574,30 @@
                 margin-bottom: 2rem;
             }
 
-            .btn-intake {
-                padding: 1rem 2.5rem;
-                font-size: 0.95rem;
+            .grade-selection-text {
+                font-size: 1rem;
                 margin-bottom: 1.25rem;
+            }
+
+            .grade-buttons {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            .btn-grade {
+                padding: 1rem 1rem;
+                font-size: 1rem;
+            }
+
+            .privacy-policy {
+                padding: 1.25rem;
+                font-size: 0.85rem;
+                margin-top: 2rem;
             }
 
             .disclaimer {
                 font-size: 0.85rem;
+                margin-top: 1.25rem;
             }
 
             /* Footer */
@@ -690,7 +755,7 @@
             }
 
             .intake-card {
-                max-width: 650px;
+                max-width: 800px;
                 padding: 3.25rem 2.75rem;
             }
 
@@ -704,9 +769,23 @@
                 margin-bottom: 2.25rem;
             }
 
-            .btn-intake {
-                padding: 1.05rem 2.75rem;
-                font-size: 1rem;
+            .grade-selection-text {
+                font-size: 1.1rem;
+            }
+
+            .grade-buttons {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.85rem;
+            }
+
+            .btn-grade {
+                padding: 1.15rem 1.25rem;
+                font-size: 1.05rem;
+            }
+
+            .privacy-policy {
+                padding: 1.5rem;
+                font-size: 0.875rem;
             }
 
             /* Footer */
@@ -911,8 +990,37 @@
             <h2>Ready to boost your grades?</h2>
             <p class="status-text">Our tutoring roster is currently <strong>OPEN</strong>. Please have your school schedule handy so you can let us know when you are free.</p>
 
-            <!-- TODO: Replace '#' with your Student Google Form link -->
-            <a href="#" target="_blank" class="btn-intake">Request a Tutor</a>
+            <p class="grade-selection-text">Select your grade to begin:</p>
+
+            <div class="grade-buttons">
+                <a href="https://docs.google.com/forms/d/1QN8PjRNDTfIVPkQe0jn69qEUuAacBaM5flP55jqdmCg/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 6</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/1SiDAGo10-XjoMTNhwe_hMJAnjeFJfgULGE-OSo00pLs/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 7</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/1qvJYGhm55XXdXMKYjKri7AjV2xAMt2_qVbHmkfVIJZI/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 8</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/1E6SZS4Lt5fl3k6IR_btLA_fGNztbO_h-gnNEzW6spV8/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 9</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/15VXRKuQQBnX9WJ7_UX_xUMPkYa_h08-OOAu98iNt7jA/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 10</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/1OI1BI27K35EEa5-8_Bvrh_5n6z-CaRnIu3_y2ADEGvs/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 11</div>
+                </a>
+                <a href="https://docs.google.com/forms/d/1QHS-QUOBszEjYSXN-60VOSH42HiBOnLgb5nz_3uxNZk/viewform" target="_blank" class="btn-grade">
+                    <div>Grade 12</div>
+                </a>
+            </div>
+
+            <div class="privacy-policy">
+                <p><strong>Privacy Policy / Terms and Conditions:</strong></p>
+                <p><strong>Use of Information:</strong> Any information collected on this form will be used strictly for evaluative purposes, to enable our team to figure out the best way to aid you in your time with us. This information will only be accessible to Road to A members, and will not be open for any third parties.</p>
+                <p><strong>Services:</strong> The services we provide will only be as a guideline for you to follow, if you wish. We are only here to aid students, and we will do so as best we can, but it is not a guarantee that there will be an improvement to your marks (again, we will aid as much as possible).</p>
+            </div>
 
             <p class="disclaimer">All tutoring sessions are conducted virtually for the safety and convenience of our students and mentors.</p>
         </div>
