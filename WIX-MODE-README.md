@@ -1,7 +1,7 @@
-# Wix Mode - Visual Page Editor
+# Wix Mode - Visual Page Editor (Robust Version)
 
 ## Overview
-Wix Mode is a comprehensive visual editing system that allows you to edit your website directly in the browser without touching any code. All changes are saved locally and persist across sessions.
+Wix Mode is a comprehensive, robust visual editing system that allows you to edit your website directly in the browser without touching any code. Features smooth drag-and-drop, precise selection, and auto-save. All changes are saved locally and persist across sessions.
 
 ## How to Enable Wix Mode
 
@@ -78,8 +78,34 @@ Wix Mode is a comprehensive visual editing system that allows you to edit your w
 ## Keyboard Shortcuts
 
 - **Delete** - Delete selected element
-- **Escape** - Deselect current element
-- **Ctrl+S** (Cmd+S) - Save changes
+- **Escape** - Deselect current element / Exit text editing
+- **Ctrl+S** (Cmd+S) - Save changes (shows confirmation)
+- **Enter** - Finish editing text (while in edit mode)
+
+## Robust Features
+
+### Smooth Drag & Drop
+- **No layout breaking**: Elements smoothly transition to absolute positioning
+- **Visual feedback**: Elements scale slightly and show shadow when dragging
+- **Precise positioning**: Delta-based positioning prevents jumps and glitches
+- **Auto-save**: Changes automatically save after dragging
+
+### Smart Selection
+- **Direct selection only**: Click directly on elements to select (no parent bubbling)
+- **Clear visual feedback**: Orange outline with "Selected" label
+- **Hover effects**: Subtle lift effect when hovering over editable elements
+- **Deselection**: Click anywhere else to deselect
+
+### Inline Text Editing
+- **Double-click to edit**: All text elements support inline editing
+- **Auto-select text**: Text automatically highlights when entering edit mode
+- **Enter to finish**: Press Enter to complete editing (Shift+Enter for new line)
+- **Auto-save on blur**: Changes save when you click away
+
+### Visual Notifications
+- **Save confirmations**: Toast notifications for actions
+- **Smooth animations**: Slide-in/out effects
+- **Non-intrusive**: Auto-dismiss after 2 seconds
 
 ## How It Works
 
@@ -181,11 +207,22 @@ To add to other pages (blog.html, contact.html, etc.), add the same two lines.
 - Safari: ✅ Fully supported
 - Mobile browsers: ⚠️ Limited (drag-and-drop may not work)
 
-### Performance
-- Minimal impact on page load
-- Only activates when enabled
-- Efficient localStorage usage
-- No server requests needed
+### Performance & Architecture
+- **Minimal impact on page load**: Only ~15KB JavaScript
+- **Event-driven architecture**: Uses capture phase for precise event handling
+- **Efficient state management**: Clean drag state with proper cleanup
+- **Debounced operations**: Auto-save doesn't spam localStorage
+- **No dependencies**: Pure vanilla JavaScript, no libraries required
+- **No server requests**: 100% client-side operation
+
+### Robustness Improvements (v2.0)
+- **Rewritten drag system**: Delta-based positioning prevents glitches
+- **Better event handling**: Uses capture phase with proper propagation control
+- **Smart positioning**: Elements smoothly convert to absolute positioning
+- **Protected element checking**: Helper functions prevent editing nav/footer
+- **Proper cleanup**: Event listeners properly removed to prevent memory leaks
+- **Visual feedback**: Smooth CSS transitions and hover effects
+- **Error handling**: Try-catch blocks around localStorage operations
 
 ## Future Enhancements (Optional)
 
