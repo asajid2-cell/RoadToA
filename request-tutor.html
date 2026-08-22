@@ -146,19 +146,6 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-        /* --- Background Decoration --- */
-        .background-shape {
-            position: absolute;
-            top: 15%;
-            right: 10%;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background-color: var(--terracotta);
-            opacity: 0.12;
-            z-index: 0;
-        }
-
         /* --- Hero Section --- */
         .hero {
             text-align: center;
@@ -508,15 +495,6 @@
                 font-size: 1rem;
             }
 
-            /* Background Decoration */
-            .background-shape {
-                width: 250px;
-                height: 250px;
-                top: 10%;
-                right: 5%;
-                opacity: 0.08;
-            }
-
             /* Hero Section */
             .hero {
                 padding: 2rem 4% 2.5rem;
@@ -709,13 +687,6 @@
                 font-size: 1rem;
             }
 
-            /* Background Decoration */
-            .background-shape {
-                width: 350px;
-                height: 350px;
-                opacity: 0.1;
-            }
-
             /* Hero Section */
             .hero {
                 padding: 2.5rem 4% 3rem;
@@ -829,12 +800,6 @@
                 font-size: 0.9rem;
             }
 
-            /* Background Decoration */
-            .background-shape {
-                width: 450px;
-                height: 450px;
-            }
-
             /* Hero Section */
             .hero {
                 padding: 3.5rem 5% 4rem;
@@ -915,17 +880,42 @@
                 transform: translateY(-3px);
             }
 
-            /* Optimal background shape size */
-            .background-shape {
-                width: 500px;
-                height: 500px;
+        /* --- Decorative Wave --- */
+        .wave-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            z-index: -1;
+        }
+
+        .wave-decoration svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 480px) {
+            .wave-decoration {
+                height: 60px;
+                opacity: 0.6;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            .wave-decoration {
+                height: 80px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="background-shape"></div>
+    <div class="wave-decoration">
+        <svg viewBox="0 0 1200 150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,0 L1200,0 L1200,80 C900,120 600,100 300,80 C150,70 75,60 0,80 Z" fill="#8FAA8B" opacity="0.3"/>
+        </svg>
+    </div>
 
     <nav>
         <a href="index.html" class="logo">Road to A</a>
