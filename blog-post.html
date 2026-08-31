@@ -1047,6 +1047,7 @@
                             <span>✍️ ${post.author}</span>
                             <span>📅 ${post.date}</span>
                             <span>⏱️ ${post.readTime}</span>
+                            <span>Views: <span id="view-count-${post.id}">—</span></span>
                         </div>
                     </div>
 
@@ -1072,6 +1073,28 @@
 
             // Load and display vote counts
             updateVoteDisplay(post.id);
+            recordBlogView(post.id);
+        }
+
+        // Count one view for each valid article rendered on this page. Failure is intentionally ignored.
+        function recordBlogView(postId) {
+            const validPostIds = new Set(['procrastination', 'tests', 'mental-health', 'wellness', 'motivation', 'welcome']);
+            if (!validPostIds.has(postId)) return;
+
+            fetch(`/api/blog/${encodeURIComponent(postId)}/view`, {
+                method: 'POST',
+                keepalive: true,
+                headers: { 'Content-Type': 'application/json' },
+                body: '{}'
+            })
+                .then(response => response.ok ? response.json() : null)
+                .then(data => {
+                    if (data && Number.isInteger(data.viewCount)) {
+                        const countElement = document.getElementById(`view-count-${postId}`);
+                        if (countElement) countElement.textContent = data.viewCount;
+                    }
+                })
+                .catch(() => {});
         }
 
         // Simple voting system with localStorage
