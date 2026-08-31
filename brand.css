@@ -1,0 +1,31 @@
+.logo {
+    position: relative;
+    display: block;
+    flex: 0 0 110px;
+    width: 110px;
+    height: 29px;
+}
+
+.logo img {
+    position: absolute;
+    top: calc(50% + 10px);
+    left: -124px;
+    display: block;
+    width: 220px;
+    height: auto;
+    transform: translateY(-50%) scale(1.6);
+    transform-origin: left center;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        flex-basis: 96px;
+        width: 96px;
+        height: 25px;
+    }
+
+    .logo img {
+        left: -42px;
+        width: 180px;
+    }
+}
